@@ -8,18 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		8F08C9B52A4D8D10001CCD82 /* HoopsConnectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08C9B42A4D8D10001CCD82 /* HoopsConnectApp.swift */; };
-		8F08C9B72A4D8D10001CCD82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08C9B62A4D8D10001CCD82 /* ContentView.swift */; };
+		8F08C9B72A4D8D10001CCD82 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08C9B62A4D8D10001CCD82 /* SplashScreen.swift */; };
 		8F08C9B92A4D8D11001CCD82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */; };
 		8F08C9BC2A4D8D11001CCD82 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F08C9BB2A4D8D11001CCD82 /* Preview Assets.xcassets */; };
-		8F65A0F22A4D93D100368D16 /* swiftlint in Frameworks */ = {isa = PBXBuildFile; productRef = 8F65A0F12A4D93D100368D16 /* swiftlint */; };
+		8FF1C0C82A4DAF9E0033DCBE /* FirebaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF1C0C72A4DAF9E0033DCBE /* FirebaseProvider.swift */; };
+		8FF1C0CB2A4DAFFF0033DCBE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8FF1C0CA2A4DAFFF0033DCBE /* FirebaseAuth */; };
+		8FF1C0CD2A4DB0330033DCBE /* DefaultFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF1C0CC2A4DB0330033DCBE /* DefaultFirebaseManager.swift */; };
+		8FF1C0D12A4DB1CE0033DCBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FF1C0D02A4DB1CE0033DCBE /* GoogleService-Info.plist */; };
+		8FF1C0D32A4DB2440033DCBE /* ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF1C0D22A4DB2440033DCBE /* ApplicationState.swift */; };
+		8FF1C0D62A4DB2E60033DCBE /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = 8FF1C0D52A4DB2E60033DCBE /* netfox */; };
+		8FF1C0DA2A4DB36E0033DCBE /* APICallerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF1C0D92A4DB36E0033DCBE /* APICallerError.swift */; };
+		8FF1C0DC2A4DB4990033DCBE /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF1C0DB2A4DB4990033DCBE /* UserModel.swift */; };
+		8FF1C0DE2A4DB5E70033DCBE /* UserCreationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF1C0DD2A4DB5E70033DCBE /* UserCreationError.swift */; };
+		8FF1C0E32A4DB8CA0033DCBE /* UserCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF1C0E22A4DB8CA0033DCBE /* UserCreationView.swift */; };
+		8FF1C0E62A4DB8EF0033DCBE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF1C0E52A4DB8EF0033DCBE /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8F08C9B12A4D8D10001CCD82 /* hoops-connect-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hoops-connect-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F08C9B42A4D8D10001CCD82 /* HoopsConnectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoopsConnectApp.swift; sourceTree = "<group>"; };
-		8F08C9B62A4D8D10001CCD82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8F08C9B62A4D8D10001CCD82 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F08C9BB2A4D8D11001CCD82 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8FF1C0C72A4DAF9E0033DCBE /* FirebaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProvider.swift; sourceTree = "<group>"; };
+		8FF1C0CC2A4DB0330033DCBE /* DefaultFirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFirebaseManager.swift; sourceTree = "<group>"; };
+		8FF1C0D02A4DB1CE0033DCBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8FF1C0D22A4DB2440033DCBE /* ApplicationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationState.swift; sourceTree = "<group>"; };
+		8FF1C0D92A4DB36E0033DCBE /* APICallerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallerError.swift; sourceTree = "<group>"; };
+		8FF1C0DB2A4DB4990033DCBE /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		8FF1C0DD2A4DB5E70033DCBE /* UserCreationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationError.swift; sourceTree = "<group>"; };
+		8FF1C0E22A4DB8CA0033DCBE /* UserCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationView.swift; sourceTree = "<group>"; };
+		8FF1C0E52A4DB8EF0033DCBE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,7 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F65A0F22A4D93D100368D16 /* swiftlint in Frameworks */,
+				8FF1C0CB2A4DAFFF0033DCBE /* FirebaseAuth in Frameworks */,
+				8FF1C0D62A4DB2E60033DCBE /* netfox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,11 +73,11 @@
 		8F08C9B32A4D8D10001CCD82 /* hoops-connect-app */ = {
 			isa = PBXGroup;
 			children = (
-				8F08C9C62A4D8E28001CCD82 /* Applications */,
-				8F08C9C52A4D8E00001CCD82 /* Views */,
 				8F08C9C42A4D8DF4001CCD82 /* Models */,
 				8F08C9C32A4D8DD8001CCD82 /* Services */,
-				8F08C9C22A4D8DC9001CCD82 /* Utils */,
+				8F08C9C62A4D8E28001CCD82 /* Applications */,
+				8F08C9C52A4D8E00001CCD82 /* Views */,
+				8FF1C0D72A4DB3490033DCBE /* Additions */,
 				8F08C9BA2A4D8D11001CCD82 /* Preview Content */,
 			);
 			path = "hoops-connect-app";
@@ -81,6 +101,7 @@
 		8F08C9C32A4D8DD8001CCD82 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8FF1C0C62A4DAF840033DCBE /* Authentication */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -88,6 +109,7 @@
 		8F08C9C42A4D8DF4001CCD82 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8FF1C0DB2A4DB4990033DCBE /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -95,7 +117,8 @@
 		8F08C9C52A4D8E00001CCD82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8F08C9B62A4D8D10001CCD82 /* ContentView.swift */,
+				8FF1C0E42A4DB8DD0033DCBE /* Home */,
+				8FF1C0DF2A4DB8970033DCBE /* Authentication */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -103,10 +126,56 @@
 		8F08C9C62A4D8E28001CCD82 /* Applications */ = {
 			isa = PBXGroup;
 			children = (
+				8FF1C0D02A4DB1CE0033DCBE /* GoogleService-Info.plist */,
 				8F08C9B42A4D8D10001CCD82 /* HoopsConnectApp.swift */,
+				8FF1C0D22A4DB2440033DCBE /* ApplicationState.swift */,
+				8F08C9B62A4D8D10001CCD82 /* SplashScreen.swift */,
 				8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */,
 			);
 			path = Applications;
+			sourceTree = "<group>";
+		};
+		8FF1C0C62A4DAF840033DCBE /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				8FF1C0C72A4DAF9E0033DCBE /* FirebaseProvider.swift */,
+				8FF1C0CC2A4DB0330033DCBE /* DefaultFirebaseManager.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		8FF1C0D72A4DB3490033DCBE /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				8FF1C0D82A4DB3590033DCBE /* Enum */,
+				8F08C9C22A4D8DC9001CCD82 /* Utils */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		8FF1C0D82A4DB3590033DCBE /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				8FF1C0D92A4DB36E0033DCBE /* APICallerError.swift */,
+				8FF1C0DD2A4DB5E70033DCBE /* UserCreationError.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		8FF1C0DF2A4DB8970033DCBE /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				8FF1C0E22A4DB8CA0033DCBE /* UserCreationView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		8FF1C0E42A4DB8DD0033DCBE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8FF1C0E52A4DB8EF0033DCBE /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,10 +192,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				8FF1C0F02A4DBBB60033DCBE /* PBXTargetDependency */,
 			);
 			name = "hoops-connect-app";
 			packageProductDependencies = (
-				8F65A0F12A4D93D100368D16 /* swiftlint */,
+				8FF1C0CA2A4DAFFF0033DCBE /* FirebaseAuth */,
+				8FF1C0D52A4DB2E60033DCBE /* netfox */,
 			);
 			productName = "hoops-connect-app";
 			productReference = 8F08C9B12A4D8D10001CCD82 /* hoops-connect-app.app */;
@@ -157,7 +228,9 @@
 			);
 			mainGroup = 8F08C9A82A4D8D10001CCD82;
 			packageReferences = (
-				8F65A0F02A4D93D100368D16 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+				8FF1C0C92A4DAFFF0033DCBE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8FF1C0D42A4DB2E60033DCBE /* XCRemoteSwiftPackageReference "netfox" */,
+				8FF1C0EE2A4DBB980033DCBE /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 8F08C9B22A4D8D10001CCD82 /* Products */;
 			projectDirPath = "";
@@ -175,6 +248,7 @@
 			files = (
 				8F08C9BC2A4D8D11001CCD82 /* Preview Assets.xcassets in Resources */,
 				8F08C9B92A4D8D11001CCD82 /* Assets.xcassets in Resources */,
+				8FF1C0D12A4DB1CE0033DCBE /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,12 +259,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F08C9B72A4D8D10001CCD82 /* ContentView.swift in Sources */,
+				8FF1C0DE2A4DB5E70033DCBE /* UserCreationError.swift in Sources */,
+				8FF1C0DA2A4DB36E0033DCBE /* APICallerError.swift in Sources */,
+				8FF1C0E32A4DB8CA0033DCBE /* UserCreationView.swift in Sources */,
+				8FF1C0E62A4DB8EF0033DCBE /* HomeView.swift in Sources */,
+				8FF1C0DC2A4DB4990033DCBE /* UserModel.swift in Sources */,
+				8FF1C0CD2A4DB0330033DCBE /* DefaultFirebaseManager.swift in Sources */,
+				8F08C9B72A4D8D10001CCD82 /* SplashScreen.swift in Sources */,
+				8FF1C0D32A4DB2440033DCBE /* ApplicationState.swift in Sources */,
+				8FF1C0C82A4DAF9E0033DCBE /* FirebaseProvider.swift in Sources */,
 				8F08C9B52A4D8D10001CCD82 /* HoopsConnectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8FF1C0F02A4DBBB60033DCBE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 8FF1C0EF2A4DBBB60033DCBE /* SwiftLintPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8F08C9BD2A4D8D11001CCD82 /* Debug */ = {
@@ -389,21 +478,47 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8F65A0F02A4D93D100368D16 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+		8FF1C0C92A4DAFFF0033DCBE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.11.0;
+			};
+		};
+		8FF1C0D42A4DB2E60033DCBE /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
+		8FF1C0EE2A4DBB980033DCBE /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.52.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8F65A0F12A4D93D100368D16 /* swiftlint */ = {
+		8FF1C0CA2A4DAFFF0033DCBE /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8F65A0F02A4D93D100368D16 /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = swiftlint;
+			package = 8FF1C0C92A4DAFFF0033DCBE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		8FF1C0D52A4DB2E60033DCBE /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FF1C0D42A4DB2E60033DCBE /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
+		};
+		8FF1C0EF2A4DBBB60033DCBE /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FF1C0EE2A4DBB980033DCBE /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
