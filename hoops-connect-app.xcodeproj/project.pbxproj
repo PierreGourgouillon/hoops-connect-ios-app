@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F08C9B52A4D8D10001CCD82 /* hoops_connect_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08C9B42A4D8D10001CCD82 /* hoops_connect_appApp.swift */; };
+		8F08C9B52A4D8D10001CCD82 /* HoopsConnectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08C9B42A4D8D10001CCD82 /* HoopsConnectApp.swift */; };
 		8F08C9B72A4D8D10001CCD82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08C9B62A4D8D10001CCD82 /* ContentView.swift */; };
 		8F08C9B92A4D8D11001CCD82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */; };
 		8F08C9BC2A4D8D11001CCD82 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F08C9BB2A4D8D11001CCD82 /* Preview Assets.xcassets */; };
+		8F65A0F22A4D93D100368D16 /* swiftlint in Frameworks */ = {isa = PBXBuildFile; productRef = 8F65A0F12A4D93D100368D16 /* swiftlint */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8F08C9B12A4D8D10001CCD82 /* hoops-connect-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hoops-connect-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F08C9B42A4D8D10001CCD82 /* hoops_connect_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hoops_connect_appApp.swift; sourceTree = "<group>"; };
+		8F08C9B42A4D8D10001CCD82 /* HoopsConnectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoopsConnectApp.swift; sourceTree = "<group>"; };
 		8F08C9B62A4D8D10001CCD82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F08C9BB2A4D8D11001CCD82 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F65A0F22A4D93D100368D16 /* swiftlint in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,9 +53,11 @@
 		8F08C9B32A4D8D10001CCD82 /* hoops-connect-app */ = {
 			isa = PBXGroup;
 			children = (
-				8F08C9B42A4D8D10001CCD82 /* hoops_connect_appApp.swift */,
-				8F08C9B62A4D8D10001CCD82 /* ContentView.swift */,
-				8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */,
+				8F08C9C62A4D8E28001CCD82 /* Applications */,
+				8F08C9C52A4D8E00001CCD82 /* Views */,
+				8F08C9C42A4D8DF4001CCD82 /* Models */,
+				8F08C9C32A4D8DD8001CCD82 /* Services */,
+				8F08C9C22A4D8DC9001CCD82 /* Utils */,
 				8F08C9BA2A4D8D11001CCD82 /* Preview Content */,
 			);
 			path = "hoops-connect-app";
@@ -65,6 +69,44 @@
 				8F08C9BB2A4D8D11001CCD82 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8F08C9C22A4D8DC9001CCD82 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8F08C9C32A4D8DD8001CCD82 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8F08C9C42A4D8DF4001CCD82 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8F08C9C52A4D8E00001CCD82 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8F08C9B62A4D8D10001CCD82 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8F08C9C62A4D8E28001CCD82 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				8F08C9B42A4D8D10001CCD82 /* HoopsConnectApp.swift */,
+				8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */,
+			);
+			path = Applications;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +125,9 @@
 			dependencies = (
 			);
 			name = "hoops-connect-app";
+			packageProductDependencies = (
+				8F65A0F12A4D93D100368D16 /* swiftlint */,
+			);
 			productName = "hoops-connect-app";
 			productReference = 8F08C9B12A4D8D10001CCD82 /* hoops-connect-app.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +156,9 @@
 				Base,
 			);
 			mainGroup = 8F08C9A82A4D8D10001CCD82;
+			packageReferences = (
+				8F65A0F02A4D93D100368D16 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = 8F08C9B22A4D8D10001CCD82 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F08C9B72A4D8D10001CCD82 /* ContentView.swift in Sources */,
-				8F08C9B52A4D8D10001CCD82 /* hoops_connect_appApp.swift in Sources */,
+				8F08C9B52A4D8D10001CCD82 /* HoopsConnectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +387,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F65A0F02A4D93D100368D16 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F65A0F12A4D93D100368D16 /* swiftlint */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F65A0F02A4D93D100368D16 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = swiftlint;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8F08C9A92A4D8D10001CCD82 /* Project object */;
 }
