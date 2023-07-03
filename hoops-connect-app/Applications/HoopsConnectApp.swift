@@ -13,20 +13,22 @@ struct AlcallApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @ObservedObject private var applicationState: ApplicationState
     init() {
-        self.applicationState = ApplicationState(firebaseManager: DefaultFirebaseManager())
+        self.applicationState = ApplicationState()
     }
 
     var body: some Scene {
         WindowGroup {
-//            ContentView(applicationState: applicationState)
-            ContentView()
+            ContentView(applicationState: applicationState)
         }
     }
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) -> Bool {
         FirebaseProvider.configureApp()
 
         #if DEBUG

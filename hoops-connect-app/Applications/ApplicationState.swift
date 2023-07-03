@@ -9,19 +9,14 @@ import SwiftUI
 
 class ApplicationState: ObservableObject {
 
-    private var firebaseManager: FirebaseManager
     @Published private(set) var state: State = .loading
-
-    init(firebaseManager: FirebaseManager) {
-        self.firebaseManager = firebaseManager
-    }
 
     func openApp() async {
         do {
-            try await firebaseManager.authenticationFlow()
+            try await FirebaseManager.shared.authenticationFlow()
             await authenticate()
         } catch {
-            try? firebaseManager.logout()
+            try? FirebaseManager.shared.logout()
             await disonnect()
         }
     }

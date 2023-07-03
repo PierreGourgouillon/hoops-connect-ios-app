@@ -17,7 +17,7 @@ struct ContentView: View {
                 if applicationState.state == .authenticated {
                     HomeView()
                 } else if applicationState.state == .unauthenticated {
-                    UserCreationView()
+                    AuthenticationView()
                 }
             } else {
                 VStack {
@@ -39,9 +39,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(
-            applicationState: .init(
-                firebaseManager: DefaultFirebaseManager()
-            )
+            applicationState: .init()
         )
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DefaultFirebaseManager.swift
+//  FirebaseManager.swift
 //  hoops-connect-app
 //
 //  Created by Pierre Gourgouillon on 29/06/2023.
@@ -8,18 +8,8 @@
 import FirebaseAuth
 import Firebase
 
-protocol FirebaseManager {
-    func register(email: String, password: String) async throws
-    func getToken() async throws -> String
-    func login(userConnectionInformations: UserModel) async throws
-    func authenticationFlow() async throws
-    func logout() throws
-    func getUserId() throws -> String
-    func getUserEmail() throws -> String
-    func sendRequestResetPasswordLink(email: String) async throws
-}
-
-class DefaultFirebaseManager: FirebaseManager {
+class FirebaseManager {
+    public static let shared: FirebaseManager = .init()
 
     func authenticationFlow() async throws {
         guard FirebaseProvider.auth.currentUser != nil else { throw ApplicationStateError.notAuthenticated }
