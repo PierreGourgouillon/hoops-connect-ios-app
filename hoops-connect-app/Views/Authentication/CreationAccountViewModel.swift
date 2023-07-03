@@ -16,11 +16,13 @@ class CreationAccountViewModel: ObservableObject {
     @Published var error: CreationAccountError = .none
 
     private var firebaseManager: FirebaseManager = .init()
+    private var userService: UserService = .init()
 
     @MainActor
     func createAccount() async {
         do {
             try await firebaseManager.register(email: userEmail, password: userPassword)
+            try await userService.register.call(body: UserDTO(email: userEmail, pseudo: pseudo, sex: userSex))
         } catch (_) {
             withAnimation {
                 isError = true

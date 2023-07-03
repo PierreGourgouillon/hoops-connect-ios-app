@@ -69,6 +69,8 @@ struct LoginAccountView: View {
             .buttonStyle(RoundedButton(color: .orange))
             .foregroundColor(.white)
             .padding(.top)
+
+            NavigationLink(destination: HomeView(), isActive: $viewModel.isNavigateToHome) { EmptyView() }
         }
         .fullScreen()
         .padding(.horizontal)

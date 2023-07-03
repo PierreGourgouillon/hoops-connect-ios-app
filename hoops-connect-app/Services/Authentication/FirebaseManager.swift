@@ -23,7 +23,7 @@ class FirebaseManager {
         }
     }
 
-    func login(userConnectionInformations: UserModel) async throws {
+    func login(userConnectionInformations: UserFirebaseModel) async throws {
         do {
             _ = try await FirebaseProvider.auth.signIn(withEmail: userConnectionInformations.email, password: userConnectionInformations.password)
         } catch {

@@ -12,6 +12,7 @@ struct CreationAccountView: View {
     @State private var index: Int = 0
 
     @ObservedObject private var viewModel: CreationAccountViewModel = .init()
+    @State private var isNavigateToHome: Bool = false
 
     var firstStep: some View {
         VStack(alignment: .leading) {
@@ -115,6 +116,7 @@ struct CreationAccountView: View {
                 guard index < 1 else {
                     Task {
                         await viewModel.createAccount()
+                        isNavigateToHome = true
                     }
                     return
                 }
@@ -126,6 +128,8 @@ struct CreationAccountView: View {
             }
             .buttonStyle(RoundedButton(color: .orange))
             .foregroundColor(.white)
+
+            NavigationLink(destination: HomeView(), isActive: $isNavigateToHome) { EmptyView() }
         }
         .padding(.horizontal)
         .background(.black.opacity(0.8))

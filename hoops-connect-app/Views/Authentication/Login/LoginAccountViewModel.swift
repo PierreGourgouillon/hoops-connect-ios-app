@@ -12,13 +12,16 @@ class LoginAccountViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var isError: Bool = false
     @Published var error: LoginAccountError = .none
+    @Published var isNavigateToHome: Bool = false
 
     private var firebaseManager: FirebaseManager = .init()
+
 
     @MainActor
     func login() async {
         do {
             try await firebaseManager.login(userConnectionInformations: .init(email: email, password: password))
+            isNavigateToHome = true
         } catch (_) {
             withAnimation {
                 isError = true
@@ -37,7 +40,7 @@ enum LoginAccountError {
         case .none:
             return ""
         case .loginFailed:
-            return "Erreur lors de la création"
+            return "Erreur lors de la connexion"
         }
     }
 
@@ -46,8 +49,8 @@ enum LoginAccountError {
         case .none:
             return ""
         case .loginFailed:
-            return "Le pseudo n'est pas valide, il doit contenir 4 charactères minimum"
+            return "Veuillez vérifier que les données saisies sont correctes"
         }
     }
-
+    // TODO: Faire le SecureField demain et mettre correctement les textfields (Plus de maj etc)
 }

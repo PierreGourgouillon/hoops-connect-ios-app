@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Home View")
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
