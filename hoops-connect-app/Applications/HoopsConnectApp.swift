@@ -19,13 +19,13 @@ struct AlcallApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(applicationState: applicationState)
-                .onAppear {
-                    do {
-                        try FirebaseManager.shared.logout()
-                    } catch (_) {
-
-                    }
-                }
+//                .onAppear {
+//                    do {
+//                        try FirebaseManager.shared.logout()
+//                    } catch (_) {
+//
+//                    }
+//                }
         }
     }
 }

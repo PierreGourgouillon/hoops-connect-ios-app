@@ -14,6 +14,9 @@
 		8F6AD05C2A4F5F930025536A /* CreationAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05B2A4F5F930025536A /* CreationAccountView.swift */; };
 		8F6AD05E2A4F62F50025536A /* LoginAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */; };
 		8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */; };
+		8F95E97C2A549D6F000A728C /* BodyBluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */; };
+		8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE122A544835003521BA /* HomeViewModel.swift */; };
+		8FDADE182A547057003521BA /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE172A547057003521BA /* BluetoothManager.swift */; };
 		8FE35E4A2A52B5ED00097C54 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE35E492A52B5ED00097C54 /* CustomAlert.swift */; };
 		8FE35E4C2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE35E4B2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift */; };
 		8FE35E4E2A52BDA800097C54 /* RoundedCorner+Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE35E4D2A52BDA800097C54 /* RoundedCorner+Shape.swift */; };
@@ -51,6 +54,10 @@
 		8F6AD05B2A4F5F930025536A /* CreationAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationAccountView.swift; sourceTree = "<group>"; };
 		8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAccountView.swift; sourceTree = "<group>"; };
 		8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyBluetoothModel.swift; sourceTree = "<group>"; };
+		8FDADE122A544835003521BA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8FDADE142A5449AA003521BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8FDADE172A547057003521BA /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		8FE35E492A52B5ED00097C54 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		8FE35E4B2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeAreaInsets+EnvironmentValues.swift"; sourceTree = "<group>"; };
 		8FE35E4D2A52BDA800097C54 /* RoundedCorner+Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedCorner+Shape.swift"; sourceTree = "<group>"; };
@@ -109,6 +116,7 @@
 		8F08C9B32A4D8D10001CCD82 /* hoops-connect-app */ = {
 			isa = PBXGroup;
 			children = (
+				8FDADE142A5449AA003521BA /* Info.plist */,
 				8F08C9C42A4D8DF4001CCD82 /* Models */,
 				8FE35E6E2A5375E300097C54 /* DTO */,
 				8F08C9C32A4D8DD8001CCD82 /* Services */,
@@ -144,6 +152,7 @@
 				8FE35E552A535D5600097C54 /* UserService.swift */,
 				8FE35E6A2A53753500097C54 /* APIData.swift */,
 				8FE35E742A5376F300097C54 /* HTTPEndpoint.swift */,
+				8FDADE172A547057003521BA /* BluetoothManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -153,6 +162,7 @@
 			children = (
 				8FF1C0DB2A4DB4990033DCBE /* UserFirebaseModel.swift */,
 				8FE35E6C2A53759F00097C54 /* UserModel.swift */,
+				8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				8FF1C0E52A4DB8EF0033DCBE /* HomeView.swift */,
+				8FDADE122A544835003521BA /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -353,12 +364,14 @@
 				8FE35E732A5376C300097C54 /* Network+Extensions.swift in Sources */,
 				8FF1C0DA2A4DB36E0033DCBE /* APICallerError.swift in Sources */,
 				8FF1C0F32A4E4A930033DCBE /* View+Extensions.swift in Sources */,
+				8F95E97C2A549D6F000A728C /* BodyBluetoothModel.swift in Sources */,
 				8FE35E6B2A53753500097C54 /* APIData.swift in Sources */,
 				8FF1C0E32A4DB8CA0033DCBE /* AuthenticationView.swift in Sources */,
 				8FF1C0E62A4DB8EF0033DCBE /* HomeView.swift in Sources */,
 				8FF1C0DC2A4DB4990033DCBE /* UserFirebaseModel.swift in Sources */,
 				8FF1C0CD2A4DB0330033DCBE /* FirebaseManager.swift in Sources */,
 				8F08C9B72A4D8D10001CCD82 /* SplashScreen.swift in Sources */,
+				8FDADE182A547057003521BA /* BluetoothManager.swift in Sources */,
 				8FE35E502A5309FA00097C54 /* LoginAccountViewModel.swift in Sources */,
 				8FE35E702A5375F500097C54 /* UserDTO.swift in Sources */,
 				8FF1C0F82A4E4B4F0033DCBE /* RoundedButton.swift in Sources */,
@@ -368,6 +381,7 @@
 				8F6AD05C2A4F5F930025536A /* CreationAccountView.swift in Sources */,
 				8FE35E562A535D5600097C54 /* UserService.swift in Sources */,
 				8FF1C0C82A4DAF9E0033DCBE /* FirebaseProvider.swift in Sources */,
+				8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */,
 				8FE35E6D2A53759F00097C54 /* UserModel.swift in Sources */,
 				8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */,
 				8FE35E4C2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift in Sources */,
@@ -510,6 +524,9 @@
 				DEVELOPMENT_TEAM = V89TG33T3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "hoops-connect-app/Info.plist";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need Bluetooth to discover, connect and share information with other nearby devices.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need Bluetooth to discover, connect and share information with other nearby devices.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -539,6 +556,9 @@
 				DEVELOPMENT_TEAM = V89TG33T3A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "hoops-connect-app/Info.plist";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We need Bluetooth to discover, connect and share information with other nearby devices.";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "We need Bluetooth to discover, connect and share information with other nearby devices.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
