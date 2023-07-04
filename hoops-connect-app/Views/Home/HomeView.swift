@@ -7,34 +7,46 @@
 
 import SwiftUI
 import CoreBluetooth
+import UIKit
 
 struct HomeView: View {
     @ObservedObject private var viewModel: HomeViewModel = .init()
-    @ObservedObject var bluetoothManager: BluetoothManager = .init()
+    @ObservedObject private var bluetoothManager: BluetoothManager = .init()
 
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack {
-            switch bluetoothManager.state {
-            case .initialize:
-                Text("Initialize")
-            case .scanning:
-                Text("Scanning...")
-            case .centralPowerOff:
-                Text("Power OFF")
-            case .connected:
-                Text("Connected")
-            case .disconnect:
-                Text("Disconnected")
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach(bluetoothManager.consoleHistoric, id: \.self) { historic in
+                        HStack {
+                            Text("-> \(historic)")
+                                .foregroundColor(.white)
+                            Spacer()
+                        }
+                    }
+                }
+                .padding(.horizontal)
             }
+            .fullScreen()
+            .background(Color.black)
         }
         .navigationBarBackButtonHidden(true)
+        .fullScreen()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    let startGame = StartGameModel(mode: .chrono, playerId: "g16SLHuJylhpCePY5T6WGz4EZLa2", duration: 60, difficulty: .easy)
+                    bluetoothManager.writeValue(data: startGame, type: "START_GAME")
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 25))
+                        .foregroundStyle(.white, .black)
+                }
+            }
+        }
         .onAppear {
             bluetoothManager.initialize()
-//            Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { _ in
-//                let data = GameModel(id: "id", date: "28 oct", score: 100, playerId: "123")
-//                viewModel.bluetoothManager.writeValue(data: data, type: "GAME")
-//            })
         }
     }
 }

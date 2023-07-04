@@ -26,6 +26,8 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     let bluetoothCoder: BluetoothCoder = .init()
     @Published var state: BluetoothState = .initialize
 
+    @Published var consoleHistoric: [String] = []
+
     func initialize() {
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
@@ -40,6 +42,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         switch central.state {
         case .poweredOn:
             state = .scanning
+            consoleHistoric.append("Bluetooth: ACTIVATE")
             centralManager.scanForPeripherals(withServices: nil, options: nil)
         default:
             state = .centralPowerOff
@@ -55,6 +58,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         self.peripheral = peripheral
         if let name = peripheral.name, name == "hoopsconnect" {
             centralManager.stopScan()
+            consoleHistoric.append("Bluetooth: Connect to \(name)")
             centralManager.connect(peripheral, options: nil)
         }
     }
@@ -83,6 +87,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                 peripheral.setNotifyValue(true, for: characteristic)
                 self.characteristic = characteristic
                 state = .connected
+                writeValue(data: DeviceBluetoothModel(), type: "CONNECTED")
             }
         }
     }
@@ -102,6 +107,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 
         if body.type == "GAME",
            let dataUnparse: GameModel = bluetoothCoder.unParseData(data: bodyData) {
+            consoleHistoric.append("Bluetooth: GET data \(dataUnparse)")
             print("DATA: \(dataUnparse)")
         }
     }
@@ -119,6 +125,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
            let characteristic = self.characteristic,
            let data = jsonBody.data(using: .utf8) {
             peripheral.writeValue(data, for: characteristic, type: .withResponse)
+            consoleHistoric.append("Bluetooth: POST data \(jsonBody)")
         }
     }
 }

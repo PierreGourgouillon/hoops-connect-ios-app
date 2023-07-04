@@ -16,10 +16,12 @@
 		8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */; };
 		8F95E97C2A549D6F000A728C /* BodyBluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */; };
 		8FCA0B782A56E6620007F97D /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA0B772A56E6620007F97D /* GameManager.swift */; };
+		8FCA0B7A2A5729580007F97D /* StartGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA0B792A5729580007F97D /* StartGameModel.swift */; };
+		8FCA0B7C2A5729860007F97D /* DeviceBluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA0B7B2A5729860007F97D /* DeviceBluetoothModel.swift */; };
 		8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE122A544835003521BA /* HomeViewModel.swift */; };
 		8FDADE182A547057003521BA /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE172A547057003521BA /* BluetoothManager.swift */; };
-		8FE22DB52A54C337005B8518 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE22DB42A54C337005B8518 /* GameModel.swift */; };
 		8FE22DB72A54CA95005B8518 /* BluetoothCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE22DB62A54CA95005B8518 /* BluetoothCoder.swift */; };
+		8FE22DBC2A54D75E005B8518 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE22DBB2A54D75E005B8518 /* GameModel.swift */; };
 		8FE35E4A2A52B5ED00097C54 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE35E492A52B5ED00097C54 /* CustomAlert.swift */; };
 		8FE35E4C2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE35E4B2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift */; };
 		8FE35E4E2A52BDA800097C54 /* RoundedCorner+Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE35E4D2A52BDA800097C54 /* RoundedCorner+Shape.swift */; };
@@ -59,11 +61,13 @@
 		8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyBluetoothModel.swift; sourceTree = "<group>"; };
 		8FCA0B772A56E6620007F97D /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		8FCA0B792A5729580007F97D /* StartGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameModel.swift; sourceTree = "<group>"; };
+		8FCA0B7B2A5729860007F97D /* DeviceBluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceBluetoothModel.swift; sourceTree = "<group>"; };
 		8FDADE122A544835003521BA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8FDADE142A5449AA003521BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8FDADE172A547057003521BA /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
-		8FE22DB42A54C337005B8518 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		8FE22DB62A54CA95005B8518 /* BluetoothCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCoder.swift; sourceTree = "<group>"; };
+		8FE22DBB2A54D75E005B8518 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		8FE35E492A52B5ED00097C54 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		8FE35E4B2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeAreaInsets+EnvironmentValues.swift"; sourceTree = "<group>"; };
 		8FE35E4D2A52BDA800097C54 /* RoundedCorner+Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedCorner+Shape.swift"; sourceTree = "<group>"; };
@@ -171,6 +175,9 @@
 				8FF1C0DB2A4DB4990033DCBE /* UserFirebaseModel.swift */,
 				8FE35E6C2A53759F00097C54 /* UserModel.swift */,
 				8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */,
+				8FE22DBB2A54D75E005B8518 /* GameModel.swift */,
+				8FCA0B792A5729580007F97D /* StartGameModel.swift */,
+				8FCA0B7B2A5729860007F97D /* DeviceBluetoothModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				8FE35E6F2A5375F500097C54 /* UserDTO.swift */,
-				8FE22DB42A54C337005B8518 /* GameModel.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -370,8 +376,9 @@
 				8FF1C0DE2A4DB5E70033DCBE /* UserCreationError.swift in Sources */,
 				8FFFAC532A508F06001246DA /* CreationAccountViewModel.swift in Sources */,
 				8FE35E4A2A52B5ED00097C54 /* CustomAlert.swift in Sources */,
-				8FE22DB52A54C337005B8518 /* GameModel.swift in Sources */,
+				8FCA0B7C2A5729860007F97D /* DeviceBluetoothModel.swift in Sources */,
 				8FE35E732A5376C300097C54 /* Network+Extensions.swift in Sources */,
+				8FCA0B7A2A5729580007F97D /* StartGameModel.swift in Sources */,
 				8FF1C0DA2A4DB36E0033DCBE /* APICallerError.swift in Sources */,
 				8FF1C0F32A4E4A930033DCBE /* View+Extensions.swift in Sources */,
 				8F95E97C2A549D6F000A728C /* BodyBluetoothModel.swift in Sources */,
@@ -387,6 +394,7 @@
 				8FF1C0F82A4E4B4F0033DCBE /* RoundedButton.swift in Sources */,
 				8FE35E4E2A52BDA800097C54 /* RoundedCorner+Shape.swift in Sources */,
 				8FFFAC512A506E56001246DA /* StepperView.swift in Sources */,
+				8FE22DBC2A54D75E005B8518 /* GameModel.swift in Sources */,
 				8FF1C0D32A4DB2440033DCBE /* ApplicationState.swift in Sources */,
 				8F6AD05C2A4F5F930025536A /* CreationAccountView.swift in Sources */,
 				8FE35E562A535D5600097C54 /* UserService.swift in Sources */,
@@ -461,7 +469,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -515,7 +523,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
