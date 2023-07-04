@@ -17,6 +17,8 @@
 		8F95E97C2A549D6F000A728C /* BodyBluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */; };
 		8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE122A544835003521BA /* HomeViewModel.swift */; };
 		8FDADE182A547057003521BA /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE172A547057003521BA /* BluetoothManager.swift */; };
+		8FE22DB52A54C337005B8518 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE22DB42A54C337005B8518 /* GameModel.swift */; };
+		8FE22DB72A54CA95005B8518 /* BluetoothCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE22DB62A54CA95005B8518 /* BluetoothCoder.swift */; };
 		8FE35E4A2A52B5ED00097C54 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE35E492A52B5ED00097C54 /* CustomAlert.swift */; };
 		8FE35E4C2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE35E4B2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift */; };
 		8FE35E4E2A52BDA800097C54 /* RoundedCorner+Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE35E4D2A52BDA800097C54 /* RoundedCorner+Shape.swift */; };
@@ -58,6 +60,8 @@
 		8FDADE122A544835003521BA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8FDADE142A5449AA003521BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8FDADE172A547057003521BA /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		8FE22DB42A54C337005B8518 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		8FE22DB62A54CA95005B8518 /* BluetoothCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCoder.swift; sourceTree = "<group>"; };
 		8FE35E492A52B5ED00097C54 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		8FE35E4B2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeAreaInsets+EnvironmentValues.swift"; sourceTree = "<group>"; };
 		8FE35E4D2A52BDA800097C54 /* RoundedCorner+Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoundedCorner+Shape.swift"; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 				8FE35E6A2A53753500097C54 /* APIData.swift */,
 				8FE35E742A5376F300097C54 /* HTTPEndpoint.swift */,
 				8FDADE172A547057003521BA /* BluetoothManager.swift */,
+				8FE22DB62A54CA95005B8518 /* BluetoothCoder.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				8FE35E6F2A5375F500097C54 /* UserDTO.swift */,
+				8FE22DB42A54C337005B8518 /* GameModel.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				8FF1C0DE2A4DB5E70033DCBE /* UserCreationError.swift in Sources */,
 				8FFFAC532A508F06001246DA /* CreationAccountViewModel.swift in Sources */,
 				8FE35E4A2A52B5ED00097C54 /* CustomAlert.swift in Sources */,
+				8FE22DB52A54C337005B8518 /* GameModel.swift in Sources */,
 				8FE35E732A5376C300097C54 /* Network+Extensions.swift in Sources */,
 				8FF1C0DA2A4DB36E0033DCBE /* APICallerError.swift in Sources */,
 				8FF1C0F32A4E4A930033DCBE /* View+Extensions.swift in Sources */,
@@ -384,6 +391,7 @@
 				8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */,
 				8FE35E6D2A53759F00097C54 /* UserModel.swift in Sources */,
 				8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */,
+				8FE22DB72A54CA95005B8518 /* BluetoothCoder.swift in Sources */,
 				8FE35E4C2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift in Sources */,
 				8F08C9B52A4D8D10001CCD82 /* HoopsConnectApp.swift in Sources */,
 			);

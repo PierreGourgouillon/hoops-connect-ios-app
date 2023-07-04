@@ -21,21 +21,12 @@ struct HomeView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear {
             bluetoothManager.initialize()
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-                let data = BodyBluetoothModel(type: "score", data: "")
-                let jsonEncoder = JSONEncoder()
-                if let jsonData = try? jsonEncoder.encode(data),
-                   let jsonString = String(data: jsonData, encoding: .utf8) {
-                    bluetoothManager.writeValue(data: jsonString)
-                }
+            Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { _ in
+                let data = GameModel(id: "id", date: "28 oct", score: 100, playerId: "123")
+                bluetoothManager.writeValue(data: data, type: "GAME")
             })
         }
     }
-}
-
-struct MyData: Codable {
-    let key1: String
-    let key2: Int
 }
 
 struct HomeView_Previews: PreviewProvider {

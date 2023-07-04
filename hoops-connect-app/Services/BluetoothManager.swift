@@ -14,6 +14,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     var peripheral: CBPeripheral!
     let characteristicUUID = CBUUID(string: "ec0e")
     var characteristic: CBCharacteristic?
+    let bluetoothCoder: BluetoothCoder = .init()
 
     func initialize() {
         centralManager = CBCentralManager(delegate: self, queue: nil)
@@ -67,20 +68,31 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             return
         }
 
-        // RECEVOIR LA DONNÉE
-        if let data = characteristic.value,
-               let jsonString = String(data: data, encoding: .utf8),
-               let jsonData = jsonString.data(using: .utf8) {
-                let jsonDecoder = JSONDecoder()
-                if let receivedData = try? jsonDecoder.decode(MyData.self, from: jsonData) {
-                    print("Received data: \(receivedData)")
-                }
-            }
+        guard let data = characteristic.value,
+              let body: BodyBluetoothModel = bluetoothCoder.unParseData(data: data) else {
+            return
+        }
+
+        let bodyData = Data(body.data.utf8)
+
+        if body.type == "GAME",
+           let dataUnparse: GameModel = bluetoothCoder.unParseData(data: bodyData) {
+            print("DATA: \(dataUnparse)")
+        }
     }
 
-    func writeValue(data: String) {
-        if let peripheral = self.peripheral, let characteristic = self.characteristic {
-            let data = data.data(using: .utf8)!
+    func writeValue<T: Encodable>(data: T, type: String) {
+        guard let jsonDataString = bluetoothCoder.parseData(data: data) else {
+            return
+        }
+        let bluetoothModel = BodyBluetoothModel(type: type, data: jsonDataString)
+        guard let jsonBody = bluetoothCoder.parseData(data: bluetoothModel) else {
+            return
+        }
+
+        if let peripheral = self.peripheral,
+           let characteristic = self.characteristic,
+           let data = jsonBody.data(using: .utf8) {
             peripheral.writeValue(data, for: characteristic, type: .withResponse)
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BodyBluetoothModel<T: Codable>: Codable {
+struct BodyBluetoothModel: Codable {
     let type: String
-    let data: T
+    let data: String
 }
