@@ -15,6 +15,7 @@
 		8F6AD05E2A4F62F50025536A /* LoginAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */; };
 		8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */; };
 		8F95E97C2A549D6F000A728C /* BodyBluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */; };
+		8FCA0B782A56E6620007F97D /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA0B772A56E6620007F97D /* GameManager.swift */; };
 		8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE122A544835003521BA /* HomeViewModel.swift */; };
 		8FDADE182A547057003521BA /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE172A547057003521BA /* BluetoothManager.swift */; };
 		8FE22DB52A54C337005B8518 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE22DB42A54C337005B8518 /* GameModel.swift */; };
@@ -57,6 +58,7 @@
 		8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAccountView.swift; sourceTree = "<group>"; };
 		8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyBluetoothModel.swift; sourceTree = "<group>"; };
+		8FCA0B772A56E6620007F97D /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		8FDADE122A544835003521BA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8FDADE142A5449AA003521BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8FDADE172A547057003521BA /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				8FE35E4B2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift */,
 				8FE35E4D2A52BDA800097C54 /* RoundedCorner+Shape.swift */,
+				8FCA0B772A56E6620007F97D /* GameManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				8FF1C0D32A4DB2440033DCBE /* ApplicationState.swift in Sources */,
 				8F6AD05C2A4F5F930025536A /* CreationAccountView.swift in Sources */,
 				8FE35E562A535D5600097C54 /* UserService.swift in Sources */,
+				8FCA0B782A56E6620007F97D /* GameManager.swift in Sources */,
 				8FF1C0C82A4DAF9E0033DCBE /* FirebaseProvider.swift in Sources */,
 				8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */,
 				8FE35E6D2A53759F00097C54 /* UserModel.swift in Sources */,
