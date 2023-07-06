@@ -19,14 +19,12 @@ enum BluetoothState {
 }
 
 class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, ObservableObject {
-    var centralManager: CBCentralManager!
-    var peripheral: CBPeripheral!
-    let characteristicUUID = CBUUID(string: "ec0e")
-    var characteristic: CBCharacteristic?
-    let bluetoothCoder: BluetoothCoder = .init()
+    private var centralManager: CBCentralManager?
+    private var peripheral: CBPeripheral?
+    private let characteristicUUID = CBUUID(string: "ec0e")
+    private var characteristic: CBCharacteristic?
+    private let bluetoothCoder: BluetoothCoder = .init()
     @Published var state: BluetoothState = .initialize
-
-    @Published var consoleHistoric: [String] = []
     @Published var latestData: BodyBluetoothModel?
     var receivedDataFragments: [String] = []
 
@@ -35,16 +33,25 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        guard let centralManager = centralManager else {
+            self.error = .BluetoothInitializeError
+            return
+        }
+
         state = .disconnect
         centralManager.cancelPeripheralConnection(peripheral)
         centralManager.scanForPeripherals(withServices: nil, options: nil)
     }
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        guard let centralManager = centralManager else {
+            self.error = .BluetoothInitializeError
+            return
+        }
+
         switch central.state {
         case .poweredOn:
             state = .scanning
-            consoleHistoric.append("Bluetooth: ACTIVATE")
             centralManager.scanForPeripherals(withServices: nil, options: nil)
         default:
             state = .centralPowerOff
@@ -57,12 +64,18 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         advertisementData: [String : Any],
         rssi RSSI: NSNumber
     ) {
-        self.peripheral = peripheral
-        if let name = peripheral.name, name == "hoopsconnect" {
-            centralManager.stopScan()
-            consoleHistoric.append("Bluetooth: Connect to \(name)")
-            centralManager.connect(peripheral, options: nil)
+        guard let centralManager = centralManager else {
+            self.error = .BluetoothInitializeError
+            return
         }
+
+        guard let name = peripheral.name, name == "hoopsconnect" else {
+            self.error = .BluetoothInitializeError
+            return
+        }
+        self.peripheral = peripheral
+        centralManager.stopScan()
+        centralManager.connect(peripheral, options: nil)
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
@@ -89,16 +102,17 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                 peripheral.setNotifyValue(true, for: characteristic)
                 self.characteristic = characteristic
                 state = .connected
-                writeValue(data: DeviceBluetoothModel(), type: "CONNECTED")
             }
         }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        guard let data = characteristic.value else { return }
-        guard let fragment = String(data: data, encoding: .utf8) else { return }
+        guard let data = characteristic.value,
+              let fragment = String(data: data, encoding: .utf8) else {
+            self.error = .BluetoothReceiveMessageError
+            return
+        }
 
-        // Add the fragment to the array
         receivedDataFragments.append(fragment)
 
         // Add an entry to consoleHistoric
@@ -110,6 +124,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             // Clear the fragments array
             receivedDataFragments.removeAll()
 
+        let bodyData = Data(body.data.utf8)
             // Store the latest data
             latestData = decodedData
 
@@ -123,8 +138,10 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         }
     }
 
+    // TODO: ne pas pouvoir lancer si on n'est pas en état connected
     func writeValue<T: Encodable>(data: T, type: String) {
-        guard let jsonDataString = bluetoothCoder.parseData(data: data) else {
+        guard state == .connected, let jsonDataString = bluetoothCoder.parseData(data: data), let peripheral = self.peripheral else {
+            self.error = .BluetoothSendMessageError
             return
         }
         do {
@@ -135,11 +152,21 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                   let characteristic = characteristic,
                   let dataToWrite = jsonString.data(using: .utf8) else { return }
 
-            peripheral.writeValue(dataToWrite, for: characteristic, type: .withResponse)
-            consoleHistoric.append("Wrote value: \(jsonString)")
-        } catch {
-            print(error.localizedDescription)
+        let bluetoothModel = BodyBluetoothModel(type: type, data: jsonDataString)
+        guard let jsonBody = bluetoothCoder.parseData(data: bluetoothModel),
+              let characteristic = self.characteristic,
+              let data = jsonBody.data(using: .utf8) else {
+            self.error = .BluetoothParseDataError
+            return
         }
+
+        peripheral.writeValue(data, for: characteristic, type: .withResponse)
     }
 }
 
+enum BluetoothError: Error {
+    case BluetoothInitializeError
+    case BluetoothSendMessageError
+    case BluetoothReceiveMessageError
+    case BluetoothParseDataError
+}
