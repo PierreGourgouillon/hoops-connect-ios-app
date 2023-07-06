@@ -41,6 +41,10 @@ class HomeViewModel: ObservableObject {
     }
 
     func startGame() {
-        gameManager.tryStartGame()
+        do {
+            try gameManager.tryStartGame(duration: 60, difficulty: .easy)
+        } catch {
+            print("ERROR")
+        }
     }
 }

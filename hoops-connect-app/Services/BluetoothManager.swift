@@ -139,7 +139,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     // TODO: ne pas pouvoir lancer si on n'est pas en état connected
-    func writeValue<T: Encodable>(data: T, type: String) {
+    func writeValue<T: Encodable>(data: T, type: DataModelType) {
         guard state == .connected, let jsonDataString = bluetoothCoder.parseData(data: data), let peripheral = self.peripheral else {
             self.error = .BluetoothSendMessageError
             return
@@ -152,7 +152,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                   let characteristic = characteristic,
                   let dataToWrite = jsonString.data(using: .utf8) else { return }
 
-        let bluetoothModel = BodyBluetoothModel(type: type, data: jsonDataString)
+        let bluetoothModel = BodyBluetoothModel(type: type.rawValue, data: jsonDataString)
         guard let jsonBody = bluetoothCoder.parseData(data: bluetoothModel),
               let characteristic = self.characteristic,
               let data = jsonBody.data(using: .utf8) else {

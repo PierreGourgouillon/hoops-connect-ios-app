@@ -26,6 +26,10 @@ struct HomeView: View {
             case .disconnect:
                 Text("Disconnected")
             }
+
+            Button("Start Game") {
+                viewModel.startGame()
+            }
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
