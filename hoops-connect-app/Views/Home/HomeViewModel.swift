@@ -16,7 +16,7 @@ class HomeViewModel: ObservableObject {
 
     @Published var bluetoothState: BluetoothState = .initialize
     @Published var isError: Bool = false
-    @Published var errorType: BluetoothError?
+    @Published var errorType: GameError?
 
     init(bluetoothManager: BluetoothManager = .init()) {
         self.bluetoothManager = bluetoothManager
@@ -24,11 +24,15 @@ class HomeViewModel: ObservableObject {
 
         bluetoothManager.$state
             .sink { [weak self] in
+                if $0 == .connected && $0 == .scanning {
+                    self?.isError = false
+                    self?.errorType = nil
+                }
                 self?.bluetoothState = $0
             }
             .store(in: &cancellables)
 
-        bluetoothManager.$error
+        gameManager.$gameError
             .sink { [weak self] in
                 self?.isError = true
                 self?.errorType = $0
@@ -37,14 +41,12 @@ class HomeViewModel: ObservableObject {
     }
 
     func initialize() {
-        bluetoothManager.initialize()
+        gameManager.initializeGame()
     }
 
     func startGame() {
-        do {
-            try gameManager.tryStartGame(duration: 60, difficulty: .easy)
-        } catch {
-            print("ERROR")
-        }
+        isError = false
+        errorType = nil
+        gameManager.tryStartGame(duration: 60, difficulty: .easy)
     }
 }

@@ -6,18 +6,53 @@
 //
 
 import Foundation
+import Combine
 
-class GameManager {
+enum GameError: Error {
+    case gameInitializeError
+    case gameStartError
+    case gameFinishError
+    case unknownError
+}
+
+class GameManager: ObservableObject {
     private let bluetoothManager: BluetoothManager
+    private var cancellables = Set<AnyCancellable>()
+    @Published var gameError: GameError?
 
     init(bluetoothManager: BluetoothManager) {
         self.bluetoothManager = bluetoothManager
+
+        bluetoothManager.$error
+            .sink { [weak self] in
+                switch $0 {
+                case .BluetoothInitializeError:
+                    self?.gameError = .gameInitializeError
+                case .BluetoothParseDataError:
+                    self?.gameError = .gameStartError
+                case .BluetoothReceiveMessageError:
+                    self?.gameError = .gameFinishError
+                case .BluetoothSendMessageError:
+                    self?.gameError = .gameStartError
+                case .none:
+                    self?.gameError = .unknownError
+                }
+            }
+            .store(in: &cancellables)
     }
 
-    func tryStartGame(duration: Int, difficulty: DifficultyStatus) throws {
-        let playerId = try FirebaseManager.shared.getUserId()
-        let startGameModel = StartGameModel(mode: .chrono, playerId: playerId, duration: duration, difficulty: difficulty)
-        bluetoothManager.writeValue(data: startGameModel, type: .gameStart)
+    func initializeGame() {
+        bluetoothManager.initialize()
+    }
+
+    func tryStartGame(duration: Int, difficulty: DifficultyStatus) {
+        do {
+            let playerId = try FirebaseManager.shared.getUserId()
+            let startGameModel = StartGameModel(mode: .chrono, playerId: playerId, duration: duration, difficulty: difficulty)
+            bluetoothManager.writeValue(data: startGameModel, type: .gameStart)
+        } catch {
+            self.gameError = .gameStartError
+        }
     }
 }
 

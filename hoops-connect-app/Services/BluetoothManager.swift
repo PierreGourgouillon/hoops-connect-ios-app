@@ -64,18 +64,16 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         advertisementData: [String : Any],
         rssi RSSI: NSNumber
     ) {
-        guard let centralManager = centralManager else {
+        guard let centralManager = centralManager, let name = peripheral.name else {
             self.error = .BluetoothInitializeError
             return
         }
 
-        guard let name = peripheral.name, name == "hoopsconnect" else {
-            self.error = .BluetoothInitializeError
-            return
+        if name == "hoopsconnect" {
+            self.peripheral = peripheral
+            centralManager.stopScan()
+            centralManager.connect(peripheral, options: nil)
         }
-        self.peripheral = peripheral
-        centralManager.stopScan()
-        centralManager.connect(peripheral, options: nil)
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
@@ -84,12 +82,14 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        guard peripheral.name == "hoopsconnect", let services = peripheral.services else {
+        guard let services = peripheral.services else {
             centralManager?.cancelPeripheralConnection(peripheral)
             return
         }
-        for service in services {
-            peripheral.discoverCharacteristics([characteristicUUID], for: service)
+        if peripheral.name == "hoopsconnect" {
+            for service in services {
+                peripheral.discoverCharacteristics([characteristicUUID], for: service)
+            }
         }
     }
 

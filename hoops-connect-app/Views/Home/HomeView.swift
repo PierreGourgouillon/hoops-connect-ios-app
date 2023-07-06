@@ -27,6 +27,17 @@ struct HomeView: View {
                 Text("Disconnected")
             }
 
+            switch viewModel.errorType {
+            case .gameInitializeError:
+                Text("GAME INIT ERROR")
+            case .gameStartError:
+                Text("GAME START ERROR")
+            case .gameFinishError:
+                Text("GAME FINISH ERROR")
+            case .unknownError, .none:
+                Text("ERROR")
+            }
+
             Button("Start Game") {
                 viewModel.startGame()
             }
