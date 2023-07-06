@@ -24,7 +24,7 @@ class HomeViewModel: ObservableObject {
 
         bluetoothManager.$state
             .sink { [weak self] in
-                if $0 == .connected && $0 == .scanning {
+                if $0 == .connected || $0 == .scanning {
                     self?.isError = false
                     self?.errorType = nil
                 }

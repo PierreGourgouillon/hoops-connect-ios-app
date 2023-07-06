@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 enum GameError: Error {
+    case bluetoothDisconnected
     case gameInitializeError
     case gameStartError
     case gameFinishError
@@ -34,8 +35,10 @@ class GameManager: ObservableObject {
                     self?.gameError = .gameFinishError
                 case .BluetoothSendMessageError:
                     self?.gameError = .gameStartError
+                case .BluetoothDisconnect:
+                    self?.gameError = .bluetoothDisconnected
                 case .none:
-                    self?.gameError = .unknownError
+                    self?.gameError = nil
                 }
             }
             .store(in: &cancellables)

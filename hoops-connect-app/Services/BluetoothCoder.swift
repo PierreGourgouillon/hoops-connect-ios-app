@@ -13,7 +13,6 @@ class BluetoothCoder {
 
     func unParseData<T: Decodable>(data: Data) -> T? {
         do {
-            let decoder = JSONDecoder()
             let receivedData = try decoder.decode(T.self, from: data)
             return receivedData
         } catch let decodeError {

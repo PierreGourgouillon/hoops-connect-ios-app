@@ -15,11 +15,11 @@ struct StartGameModel: Encodable {
     let difficulty: DifficultyStatus
 }
 
-enum GameModeStatus: String, Encodable {
+enum GameModeStatus: String, Codable {
     case chrono = "CHRONO"
 }
 
-enum DifficultyStatus: String, Encodable {
+enum DifficultyStatus: String, Codable {
     case easy = "EASY"
     case medium = "MEDIUM"
     case hardcore = "HARDCORE"

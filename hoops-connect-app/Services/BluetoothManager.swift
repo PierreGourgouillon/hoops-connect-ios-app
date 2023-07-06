@@ -53,6 +53,11 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         case .poweredOn:
             state = .scanning
             centralManager.scanForPeripherals(withServices: nil, options: nil)
+        case .poweredOff:
+            state = .centralPowerOff
+            self.error = .BluetoothDisconnect
+        case .unauthorized:
+            self.error = .BluetoothSendMessageError
         default:
             state = .centralPowerOff
         }
@@ -64,12 +69,12 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         advertisementData: [String : Any],
         rssi RSSI: NSNumber
     ) {
-        guard let centralManager = centralManager, let name = peripheral.name else {
+        guard let centralManager = centralManager else {
             self.error = .BluetoothInitializeError
             return
         }
 
-        if name == "hoopsconnect" {
+        if let name = peripheral.name, name  == "hoopsconnect" {
             self.peripheral = peripheral
             centralManager.stopScan()
             centralManager.connect(peripheral, options: nil)
@@ -102,11 +107,17 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                 peripheral.setNotifyValue(true, for: characteristic)
                 self.characteristic = characteristic
                 state = .connected
+                writeValue(data: DeviceBluetoothModel(), type: .connected)
             }
         }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        if let error = error {
+            print("Error receiving notification for characteristic \(characteristic): \(error)")
+            return
+        }
+
         guard let data = characteristic.value,
               let fragment = String(data: data, encoding: .utf8) else {
             self.error = .BluetoothReceiveMessageError
@@ -169,4 +180,5 @@ enum BluetoothError: Error {
     case BluetoothSendMessageError
     case BluetoothReceiveMessageError
     case BluetoothParseDataError
+    case BluetoothDisconnect
 }

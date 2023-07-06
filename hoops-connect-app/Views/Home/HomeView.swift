@@ -34,8 +34,12 @@ struct HomeView: View {
                 Text("GAME START ERROR")
             case .gameFinishError:
                 Text("GAME FINISH ERROR")
-            case .unknownError, .none:
-                Text("ERROR")
+            case .unknownError:
+                Text("UNKNON ERROR")
+            case .bluetoothDisconnected:
+                Text("DISCONNECT ERROR")
+            case .none:
+                EmptyView()
             }
 
             Button("Start Game") {
