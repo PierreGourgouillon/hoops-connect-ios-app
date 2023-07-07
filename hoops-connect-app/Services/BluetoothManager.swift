@@ -27,6 +27,8 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     @Published var state: BluetoothState = .initialize
 
     @Published var consoleHistoric: [String] = []
+    @Published var latestData: BodyBluetoothModel?
+    var receivedDataFragments: [String] = []
 
     func initialize() {
         centralManager = CBCentralManager(delegate: self, queue: nil)
@@ -93,39 +95,51 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        if let error = error {
-            print("Error receiving notification for characteristic \(characteristic): \(error)")
-            return
-        }
+        guard let data = characteristic.value else { return }
+        guard let fragment = String(data: data, encoding: .utf8) else { return }
 
-        guard let data = characteristic.value,
-              let body: BodyBluetoothModel = bluetoothCoder.unParseData(data: data) else {
-            return
-        }
+        // Add the fragment to the array
+        receivedDataFragments.append(fragment)
 
-        let bodyData = Data(body.data.utf8)
+        // Add an entry to consoleHistoric
+        consoleHistoric.append("Received fragment: \(fragment)")
 
-        if body.type == "GAME",
-           let dataUnparse: GameModel = bluetoothCoder.unParseData(data: bodyData) {
-            consoleHistoric.append("Bluetooth: GET data \(dataUnparse)")
-            print("DATA: \(dataUnparse)")
+        // Try to decode the assembled data
+        if let jsonData = receivedDataFragments.joined().data(using: .utf8),
+           let decodedData = try? JSONDecoder().decode(BodyBluetoothModel.self, from: jsonData) {
+            // Clear the fragments array
+            receivedDataFragments.removeAll()
+
+            // Store the latest data
+            latestData = decodedData
+
+            // Add an entry to consoleHistoric
+            let bodyData = Data(decodedData.data.utf8)
+
+            if decodedData.type == "GAME_FINISHED",
+               let dataUnparse: GameModel = bluetoothCoder.unParseData(data: bodyData) {
+                print("DATA: \(dataUnparse.date)")
+            }
         }
     }
 
     func writeValue<T: Encodable>(data: T, type: String) {
-        guard state == .connected, let jsonDataString = bluetoothCoder.parseData(data: data) else {
+        guard let jsonDataString = bluetoothCoder.parseData(data: data) else {
             return
         }
-        let bluetoothModel = BodyBluetoothModel(type: type, data: jsonDataString)
-        guard let jsonBody = bluetoothCoder.parseData(data: bluetoothModel) else {
-            return
-        }
+        do {
+            let body = BodyBluetoothModel(type: type, data: jsonDataString)
+            let encoder = JSONEncoder()
+            let jsonData = try encoder.encode(body)
+            guard let jsonString = String(data: jsonData, encoding: .utf8),
+                  let characteristic = characteristic,
+                  let dataToWrite = jsonString.data(using: .utf8) else { return }
 
-        if let peripheral = self.peripheral,
-           let characteristic = self.characteristic,
-           let data = jsonBody.data(using: .utf8) {
-            peripheral.writeValue(data, for: characteristic, type: .withResponse)
-            consoleHistoric.append("Bluetooth: POST data \(jsonBody)")
+            peripheral.writeValue(dataToWrite, for: characteristic, type: .withResponse)
+            consoleHistoric.append("Wrote value: \(jsonString)")
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
+

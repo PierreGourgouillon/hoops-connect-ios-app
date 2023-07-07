@@ -12,4 +12,8 @@ struct GameModel: Codable {
     let date: String
     let score: Int
     let playerId: String
+    let deviceId: String
+    let difficulty: String
+    let duration: Int
+    let mode: String
 }

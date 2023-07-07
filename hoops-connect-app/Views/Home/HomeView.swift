@@ -37,7 +37,7 @@ struct HomeView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     let startGame = StartGameModel(mode: .chrono, playerId: "g16SLHuJylhpCePY5T6WGz4EZLa2", duration: 60, difficulty: .easy)
-                    bluetoothManager.writeValue(data: startGame, type: "START_GAME")
+                    bluetoothManager.writeValue(data: startGame, type: "GAME_START")
                 } label: {
                     Image(systemName: "plus")
                         .font(.system(size: 25))

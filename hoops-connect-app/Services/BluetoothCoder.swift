@@ -12,13 +12,14 @@ class BluetoothCoder {
     let encoder: JSONEncoder = .init()
 
     func unParseData<T: Decodable>(data: Data) -> T? {
-        guard let jsonString = String(data: data, encoding: .utf8),
-              let jsonData = jsonString.data(using: .utf8),
-              let receivedData = try? decoder.decode(T.self, from: jsonData) else {
+        do {
+            let decoder = JSONDecoder()
+            let receivedData = try decoder.decode(T.self, from: data)
+            return receivedData
+        } catch let decodeError {
+            print("Failed to decode \(T.self): \(decodeError)")
             return nil
         }
-
-        return receivedData
     }
 
     func parseData<T: Encodable>(data: T) -> String? {
