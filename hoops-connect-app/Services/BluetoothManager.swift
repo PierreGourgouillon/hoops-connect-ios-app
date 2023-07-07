@@ -25,7 +25,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     private var characteristic: CBCharacteristic?
     private let bluetoothCoder: BluetoothCoder = .init()
     @Published var state: BluetoothState = .initialize
-    @Published var latestData: BodyBluetoothModel?
+    @Published var latestData: GameModel?
     var receivedDataFragments: [String] = []
     @Published var error: BluetoothError?
 
@@ -131,15 +131,14 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
               let decodedData = try? JSONDecoder().decode(BodyBluetoothModel.self, from: jsonData) else {
             return
         }
-
+        print("UNE FOIS")
         receivedDataFragments.removeAll()
-        latestData = decodedData
 
         let bodyData = Data(decodedData.data.utf8)
 
         if decodedData.type == "GAME_FINISHED",
            let dataUnparse: GameModel = bluetoothCoder.unParseData(data: bodyData) {
-            print("DATA: \(dataUnparse.date)")
+            latestData = dataUnparse
         }
     }
 
