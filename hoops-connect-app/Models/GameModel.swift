@@ -8,12 +8,15 @@
 import Foundation
 
 struct GameModel: Codable {
-    let id: String
     let date: String
     let score: Int
     let playerId: String
     let deviceId: String
-    let difficulty: String
+    let difficulty: DifficultyStatus
     let duration: Int
-    let mode: String
+    let mode: GameModeStatus
+
+    func toDTO() -> GameDTO {
+        GameDTO(date: date, score: score, deviceId: deviceId, difficulty: difficulty, duration: duration, mode: mode)
+    }
 }

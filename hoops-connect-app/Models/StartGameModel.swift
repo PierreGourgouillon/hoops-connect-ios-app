@@ -8,7 +8,6 @@
 import Foundation
 
 struct StartGameModel: Encodable {
-    let gameId: String = "NTM"
     let mode: GameModeStatus
     let playerId: String
     let duration: Int

@@ -142,7 +142,6 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         }
     }
 
-    // TODO: ne pas pouvoir lancer si on n'est pas en état connected
     func writeValue<T: Encodable>(data: T, type: DataModelType) {
         guard state == .connected,
               let jsonDataString = bluetoothCoder.parseData(data: data),

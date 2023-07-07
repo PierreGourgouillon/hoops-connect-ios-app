@@ -12,7 +12,7 @@ enum HTTPEndpoint: String {
 
     case registerUser = "/auth/register"
     case me = "/auth/login"
-//    case mint = "/collections/mint/:collectionId"
+    case gameFinish = "/games/finish"
 
     var url: String? {
         URL(string: baseURL)?.appendingPathComponent(self.rawValue).absoluteString

@@ -20,6 +20,7 @@ class GameManager: ObservableObject {
     private let bluetoothManager: BluetoothManager
     private var cancellables = Set<AnyCancellable>()
     @Published var gameError: GameError?
+    private var gameService: GameService = .init()
 
     init(bluetoothManager: BluetoothManager) {
         self.bluetoothManager = bluetoothManager
@@ -42,6 +43,18 @@ class GameManager: ObservableObject {
                 }
             }
             .store(in: &cancellables)
+
+        bluetoothManager.$latestData
+            .sink { [weak self] in
+                guard let gameModel = $0, let self = self else {
+                    return
+                }
+
+                Task {
+                    await self.endGame(gameModel: gameModel)
+                }
+            }
+            .store(in: &cancellables)
     }
 
     func initializeGame() {
@@ -55,6 +68,15 @@ class GameManager: ObservableObject {
             bluetoothManager.writeValue(data: startGameModel, type: .gameStart)
         } catch {
             self.gameError = .gameStartError
+        }
+    }
+
+    func endGame(gameModel: GameModel) async {
+        do {
+            try await gameService.gameFinish.call(body: gameModel.toDTO())
+            print("END GAME")
+        } catch {
+
         }
     }
 }

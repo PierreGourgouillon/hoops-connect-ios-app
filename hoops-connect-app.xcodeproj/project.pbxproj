@@ -11,6 +11,9 @@
 		8F08C9B72A4D8D10001CCD82 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F08C9B62A4D8D10001CCD82 /* SplashScreen.swift */; };
 		8F08C9B92A4D8D11001CCD82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */; };
 		8F08C9BC2A4D8D11001CCD82 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F08C9BB2A4D8D11001CCD82 /* Preview Assets.xcassets */; };
+		8F4CDF342A580E4200E01819 /* GameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4CDF332A580E4200E01819 /* GameDTO.swift */; };
+		8F4CDF362A580E6400E01819 /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4CDF352A580E6400E01819 /* GameService.swift */; };
+		8F4CDF382A58606B00E01819 /* StatisticHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4CDF372A58606B00E01819 /* StatisticHomeView.swift */; };
 		8F6AD05C2A4F5F930025536A /* CreationAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05B2A4F5F930025536A /* CreationAccountView.swift */; };
 		8F6AD05E2A4F62F50025536A /* LoginAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */; };
 		8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */; };
@@ -56,6 +59,9 @@
 		8F08C9B62A4D8D10001CCD82 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F08C9BB2A4D8D11001CCD82 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8F4CDF332A580E4200E01819 /* GameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDTO.swift; sourceTree = "<group>"; };
+		8F4CDF352A580E6400E01819 /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		8F4CDF372A58606B00E01819 /* StatisticHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticHomeView.swift; sourceTree = "<group>"; };
 		8F6AD05B2A4F5F930025536A /* CreationAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationAccountView.swift; sourceTree = "<group>"; };
 		8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAccountView.swift; sourceTree = "<group>"; };
 		8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
@@ -165,6 +171,7 @@
 				8FE35E742A5376F300097C54 /* HTTPEndpoint.swift */,
 				8FDADE172A547057003521BA /* BluetoothManager.swift */,
 				8FE22DB62A54CA95005B8518 /* BluetoothCoder.swift */,
+				8F4CDF352A580E6400E01819 /* GameService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -216,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				8FE35E6F2A5375F500097C54 /* UserDTO.swift */,
+				8F4CDF332A580E4200E01819 /* GameDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -285,6 +293,7 @@
 				8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */,
 				8FFFAC502A506E56001246DA /* StepperView.swift */,
 				8FE35E492A52B5ED00097C54 /* CustomAlert.swift */,
+				8F4CDF372A58606B00E01819 /* StatisticHomeView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -381,6 +390,7 @@
 				8FCA0B7A2A5729580007F97D /* StartGameModel.swift in Sources */,
 				8FF1C0DA2A4DB36E0033DCBE /* APICallerError.swift in Sources */,
 				8FF1C0F32A4E4A930033DCBE /* View+Extensions.swift in Sources */,
+				8F4CDF362A580E6400E01819 /* GameService.swift in Sources */,
 				8F95E97C2A549D6F000A728C /* BodyBluetoothModel.swift in Sources */,
 				8FE35E6B2A53753500097C54 /* APIData.swift in Sources */,
 				8FF1C0E32A4DB8CA0033DCBE /* AuthenticationView.swift in Sources */,
@@ -400,7 +410,9 @@
 				8FE35E562A535D5600097C54 /* UserService.swift in Sources */,
 				8FCA0B782A56E6620007F97D /* GameManager.swift in Sources */,
 				8FF1C0C82A4DAF9E0033DCBE /* FirebaseProvider.swift in Sources */,
+				8F4CDF342A580E4200E01819 /* GameDTO.swift in Sources */,
 				8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */,
+				8F4CDF382A58606B00E01819 /* StatisticHomeView.swift in Sources */,
 				8FE35E6D2A53759F00097C54 /* UserModel.swift in Sources */,
 				8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */,
 				8FE22DB72A54CA95005B8518 /* BluetoothCoder.swift in Sources */,
