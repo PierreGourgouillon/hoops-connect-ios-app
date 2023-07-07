@@ -17,6 +17,7 @@ class HomeViewModel: ObservableObject {
     @Published var bluetoothState: BluetoothState = .initialize
     @Published var isError: Bool = false
     @Published var errorType: GameError?
+    @Published var consoleChat: [String] = []
 
     init(bluetoothManager: BluetoothManager = .init()) {
         self.bluetoothManager = bluetoothManager
@@ -36,6 +37,12 @@ class HomeViewModel: ObservableObject {
             .sink { [weak self] in
                 self?.isError = true
                 self?.errorType = $0
+            }
+            .store(in: &cancellables)
+
+        gameManager.$consoleChat
+            .sink { [weak self] in
+                self?.consoleChat = $0
             }
             .store(in: &cancellables)
     }

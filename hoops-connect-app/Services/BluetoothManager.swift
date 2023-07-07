@@ -28,6 +28,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     @Published var latestData: BodyBluetoothModel?
     var receivedDataFragments: [String] = []
     @Published var error: BluetoothError?
+    @Published var consoleChat: [String] = []
 
     func initialize() {
         centralManager = CBCentralManager(delegate: self, queue: nil)
@@ -52,14 +53,19 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 
         switch central.state {
         case .poweredOn:
+            consoleChat.append("Bluetooth -> POWER ON")
             state = .scanning
+            consoleChat.append("Bluetooth -> SCANNING")
             centralManager.scanForPeripherals(withServices: nil, options: nil)
         case .poweredOff:
             state = .centralPowerOff
             self.error = .BluetoothDisconnect
+            consoleChat.append("Bluetooth -> POWER OFF")
         case .unauthorized:
+            consoleChat.append("Bluetooth -> UNAUTHORIZED")
             self.error = .BluetoothSendMessageError
         default:
+            consoleChat.append("Bluetooth -> POWER OFF")
             state = .centralPowerOff
         }
     }
@@ -79,6 +85,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             self.peripheral = peripheral
             centralManager.stopScan()
             centralManager.connect(peripheral, options: nil)
+            consoleChat.append("Bluetooth -> Connect to hoopsconnect")
         }
     }
 
@@ -139,7 +146,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 
         if decodedData.type == "GAME_FINISHED",
            let dataUnparse: GameModel = bluetoothCoder.unParseData(data: bodyData) {
-            print("DATA: \(dataUnparse.date)")
+            consoleChat.append("Bluetooth -> DATA GET \(dataUnparse)")
         }
     }
 
@@ -160,6 +167,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             self.error = .BluetoothParseDataError
             return
         }
+        consoleChat.append("Bluetooth -> DATA POST \(jsonBody)")
         peripheral.writeValue(data, for: characteristic, type: .withResponse)
     }
 }

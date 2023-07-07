@@ -14,45 +14,62 @@ struct HomeView: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack {
-            switch viewModel.bluetoothState {
-            case .initialize:
-                Text("Initialize")
-            case .scanning:
-                Text("Scanning...")
-            case .centralPowerOff:
-                Text("Power OFF")
-            case .connected:
-                Text("Connected")
-            case .disconnect:
-                Text("Disconnected")
+            HStack {
+                Text("Bluetooth state:")
+                switch viewModel.bluetoothState {
+                case .initialize:
+                    Text("Initialize")
+                case .scanning:
+                    Text("Scanning...")
+                case .centralPowerOff:
+                    Text("Power OFF")
+                case .connected:
+                    Text("Connected")
+                case .disconnect:
+                    Text("Disconnected")
+                }
             }
-
-            switch viewModel.errorType {
-            case .gameInitializeError:
-                Text("GAME INIT ERROR")
-            case .gameStartError:
-                Text("GAME START ERROR")
-            case .gameFinishError:
-                Text("GAME FINISH ERROR")
-            case .unknownError:
-                Text("UNKNON ERROR")
-            case .bluetoothDisconnected:
-                Text("DISCONNECT ERROR")
-            case .none:
-                EmptyView()
+            HStack {
+                Text("Bluetooth error: ")
+                switch viewModel.errorType {
+                case .gameInitializeError:
+                    Text("GAME INIT ERROR")
+                case .gameStartError:
+                    Text("GAME START ERROR")
+                case .gameFinishError:
+                    Text("GAME FINISH ERROR")
+                case .unknownError:
+                    Text("UNKNON ERROR")
+                case .bluetoothDisconnected:
+                    Text("DISCONNECT ERROR")
+                case .none:
+                    EmptyView()
+                }
             }
 
             Button("Start Game") {
                 viewModel.startGame()
             }
+
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach(viewModel.consoleChat, id: \.self) { historic in
+                        HStack {
+                            Text("-> \(historic)")
+                                .foregroundColor(.white)
+                            Spacer()
+                        }
+                    }
+                }
+                .padding(.horizontal)
+            }
+            .fullScreen()
+            .background(Color.black)
         }
         .navigationBarBackButtonHidden(true)
+        .fullScreen()
         .onAppear {
             viewModel.initialize()
-//            Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { _ in
-//                let data = GameModel(id: "id", date: "28 oct", score: 100, playerId: "123")
-//                viewModel.bluetoothManager.writeValue(data: data, type: "GAME")
-//            })
         }
     }
 }

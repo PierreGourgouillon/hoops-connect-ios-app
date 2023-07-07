@@ -20,6 +20,7 @@ class GameManager: ObservableObject {
     private let bluetoothManager: BluetoothManager
     private var cancellables = Set<AnyCancellable>()
     @Published var gameError: GameError?
+    @Published var consoleChat: [String] = []
 
     init(bluetoothManager: BluetoothManager) {
         self.bluetoothManager = bluetoothManager
@@ -40,6 +41,12 @@ class GameManager: ObservableObject {
                 case .none:
                     self?.gameError = nil
                 }
+            }
+            .store(in: &cancellables)
+
+        bluetoothManager.$consoleChat
+            .sink { [weak self] in
+                self?.consoleChat = $0
             }
             .store(in: &cancellables)
     }
