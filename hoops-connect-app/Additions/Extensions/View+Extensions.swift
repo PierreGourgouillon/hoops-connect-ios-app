@@ -16,23 +16,27 @@ extension View {
             maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/
         )
     }
-
+    
     func fullWidth() -> some View {
         frame(minWidth: 0, maxWidth: .infinity)
     }
-
+    
     func backgroundRadius(radius: CGFloat, color: Color) -> some View {
         background(
             RoundedRectangle(cornerRadius: radius, style: .continuous)
                 .fill(color)
         )
     }
-
+    
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
-
+    
     func customAlert(isPresented: Binding<Bool>, title: String, message: String) -> some View {
         modifier(CustomAlert(isPresented: isPresented, title: title, message: message))
+    }
+    
+    func readSize(_ size: Binding<CGSize>) -> some View {
+        modifier(ReadSizeModifier(size: size))
     }
 }

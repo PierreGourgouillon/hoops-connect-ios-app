@@ -9,7 +9,7 @@ import Foundation
 import CoreBluetooth
 import Combine
 
-class HomeViewModel: ObservableObject {
+class PlayGameViewModel: ObservableObject {
     private var bluetoothManager: BluetoothManager
     private var gameManager: GameManager
     private var cancellables = Set<AnyCancellable>()

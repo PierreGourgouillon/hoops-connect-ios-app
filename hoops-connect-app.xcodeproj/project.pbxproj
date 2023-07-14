@@ -17,11 +17,14 @@
 		8F6AD05C2A4F5F930025536A /* CreationAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05B2A4F5F930025536A /* CreationAccountView.swift */; };
 		8F6AD05E2A4F62F50025536A /* LoginAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */; };
 		8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */; };
+		8F8EC64E2A61772300B3F23B /* PlayGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8EC64D2A61772300B3F23B /* PlayGameView.swift */; };
+		8F8EC6502A617D0F00B3F23B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8EC64F2A617D0F00B3F23B /* CustomTabBar.swift */; };
+		8F8EC6522A61864F00B3F23B /* ReadSizeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8EC6512A61864F00B3F23B /* ReadSizeModifier.swift */; };
 		8F95E97C2A549D6F000A728C /* BodyBluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */; };
 		8FCA0B782A56E6620007F97D /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA0B772A56E6620007F97D /* GameManager.swift */; };
 		8FCA0B7A2A5729580007F97D /* StartGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA0B792A5729580007F97D /* StartGameModel.swift */; };
 		8FCA0B7C2A5729860007F97D /* DeviceBluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA0B7B2A5729860007F97D /* DeviceBluetoothModel.swift */; };
-		8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE122A544835003521BA /* HomeViewModel.swift */; };
+		8FDADE132A544835003521BA /* PlayGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE122A544835003521BA /* PlayGameViewModel.swift */; };
 		8FDADE182A547057003521BA /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDADE172A547057003521BA /* BluetoothManager.swift */; };
 		8FE22DB72A54CA95005B8518 /* BluetoothCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE22DB62A54CA95005B8518 /* BluetoothCoder.swift */; };
 		8FE22DBC2A54D75E005B8518 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE22DBB2A54D75E005B8518 /* GameModel.swift */; };
@@ -65,11 +68,14 @@
 		8F6AD05B2A4F5F930025536A /* CreationAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationAccountView.swift; sourceTree = "<group>"; };
 		8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAccountView.swift; sourceTree = "<group>"; };
 		8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		8F8EC64D2A61772300B3F23B /* PlayGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGameView.swift; sourceTree = "<group>"; };
+		8F8EC64F2A617D0F00B3F23B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		8F8EC6512A61864F00B3F23B /* ReadSizeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSizeModifier.swift; sourceTree = "<group>"; };
 		8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyBluetoothModel.swift; sourceTree = "<group>"; };
 		8FCA0B772A56E6620007F97D /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		8FCA0B792A5729580007F97D /* StartGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameModel.swift; sourceTree = "<group>"; };
 		8FCA0B7B2A5729860007F97D /* DeviceBluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceBluetoothModel.swift; sourceTree = "<group>"; };
-		8FDADE122A544835003521BA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8FDADE122A544835003521BA /* PlayGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGameViewModel.swift; sourceTree = "<group>"; };
 		8FDADE142A5449AA003521BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8FDADE172A547057003521BA /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		8FE22DB62A54CA95005B8518 /* BluetoothCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothCoder.swift; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 				8FE35E4B2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift */,
 				8FE35E4D2A52BDA800097C54 /* RoundedCorner+Shape.swift */,
 				8FCA0B772A56E6620007F97D /* GameManager.swift */,
+				8F8EC6512A61864F00B3F23B /* ReadSizeModifier.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -192,8 +199,10 @@
 		8F08C9C52A4D8E00001CCD82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8F8EC64C2A61771100B3F23B /* Game */,
 				8FF1C0E42A4DB8DD0033DCBE /* Home */,
 				8FF1C0DF2A4DB8970033DCBE /* Authentication */,
+				8F8EC64F2A617D0F00B3F23B /* CustomTabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +217,15 @@
 				8F08C9B82A4D8D11001CCD82 /* Assets.xcassets */,
 			);
 			path = Applications;
+			sourceTree = "<group>";
+		};
+		8F8EC64C2A61771100B3F23B /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				8F8EC64D2A61772300B3F23B /* PlayGameView.swift */,
+				8FDADE122A544835003521BA /* PlayGameViewModel.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 		8FE35E512A5327EE00097C54 /* Login */ = {
@@ -281,7 +299,6 @@
 			isa = PBXGroup;
 			children = (
 				8FF1C0E52A4DB8EF0033DCBE /* HomeView.swift */,
-				8FDADE122A544835003521BA /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -409,12 +426,15 @@
 				8F6AD05C2A4F5F930025536A /* CreationAccountView.swift in Sources */,
 				8FE35E562A535D5600097C54 /* UserService.swift in Sources */,
 				8FCA0B782A56E6620007F97D /* GameManager.swift in Sources */,
+				8F8EC6522A61864F00B3F23B /* ReadSizeModifier.swift in Sources */,
 				8FF1C0C82A4DAF9E0033DCBE /* FirebaseProvider.swift in Sources */,
+				8F8EC64E2A61772300B3F23B /* PlayGameView.swift in Sources */,
 				8F4CDF342A580E4200E01819 /* GameDTO.swift in Sources */,
-				8FDADE132A544835003521BA /* HomeViewModel.swift in Sources */,
+				8FDADE132A544835003521BA /* PlayGameViewModel.swift in Sources */,
 				8F4CDF382A58606B00E01819 /* StatisticHomeView.swift in Sources */,
 				8FE35E6D2A53759F00097C54 /* UserModel.swift in Sources */,
 				8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */,
+				8F8EC6502A617D0F00B3F23B /* CustomTabBar.swift in Sources */,
 				8FE22DB72A54CA95005B8518 /* BluetoothCoder.swift in Sources */,
 				8FE35E4C2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift in Sources */,
 				8F08C9B52A4D8D10001CCD82 /* HoopsConnectApp.swift in Sources */,
