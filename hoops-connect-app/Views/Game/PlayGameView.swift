@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlayGameView: View {
+    @ObservedObject private var viewModel: PlayGameViewModel = .init()
+
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -28,7 +30,7 @@ struct PlayGameView: View {
                 .padding(.top, -25)
 
                 Button("Lancer une partie") {
-
+                    viewModel.startGame()
                 }
                 .buttonStyle(RoundedButton(color: .orange))
                 .foregroundStyle(.white)
