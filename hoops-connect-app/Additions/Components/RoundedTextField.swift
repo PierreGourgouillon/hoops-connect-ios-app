@@ -21,6 +21,7 @@ struct RoundedTextField: View {
                 .font(.system(size: 22))
             TextField("", text: $text, prompt: Text(placeholder).foregroundColor(.white))
                 .foregroundColor(.white)
+                .ignoresSafeArea(.keyboard, edges: .bottom)
         }
         .padding(.horizontal)
         .padding(.vertical)
@@ -46,3 +47,4 @@ struct RoundedTextField_Previews: PreviewProvider {
         RoundedTextField(text: .constant(""), imageName: "envelope", placeholder: "Email")
     }
 }
+

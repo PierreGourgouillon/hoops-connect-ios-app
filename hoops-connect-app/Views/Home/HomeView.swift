@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var tabSelected: Tab = .house
     @State private var sizeTabBar: CGSize = CGSize()
     @ObservedObject var playGameViewModel: PlayGameViewModel = .init()
+    @ObservedObject var settingsViewModel: SettingsViewModel = .init()
 
     init() {
         UITabBar.appearance().isHidden = true
@@ -20,7 +21,7 @@ struct HomeView: View {
     var navTitle: String {
         switch tabSelected {
         case .gearshape:
-            return "Settings"
+            return ""
         case .house:
             return "Jouer"
         case .chart:
@@ -35,7 +36,7 @@ struct HomeView: View {
                     TabView(selection: $tabSelected) {
                         switch tabSelected {
                         case .gearshape:
-                            Text("Gear")
+                            SettingsView(viewModel: settingsViewModel)
                         case .house:
                             PlayGameView(viewModel: playGameViewModel)
                         case .chart:
@@ -51,6 +52,11 @@ struct HomeView: View {
                 isPresented: $playGameViewModel.isError,
                 title: playGameViewModel.gameError?.title ?? "",
                 message: playGameViewModel.gameError?.message ?? ""
+            )
+            .customAlert(
+                isPresented: $settingsViewModel.isError,
+                title: settingsViewModel.settingsError?.title ?? "",
+                message: settingsViewModel.settingsError?.message ?? ""
             )
         }
         .navigationTitle(navTitle)

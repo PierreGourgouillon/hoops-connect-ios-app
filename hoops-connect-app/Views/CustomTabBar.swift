@@ -49,7 +49,7 @@ struct CustomTabBar: View {
                     Spacer()
                     ZStack(alignment: .center) {
                         Image(systemName: selectedTab == tab ? fillImage : tab.defaultImage)
-                            .foregroundColor(tab == selectedTab ? .orange : .gray)
+                            .foregroundColor(tab == selectedTab ? ThemeColors.primaryOrange : .gray)
                             .font(.system(size: 20))
                             .onTapGesture {
                                 withAnimation(.linear(duration: 0.2)) {

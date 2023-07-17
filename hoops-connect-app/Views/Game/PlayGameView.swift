@@ -120,7 +120,7 @@ struct PlayGameView: View {
             .fullScreen()
             .navigationBarBackButtonHidden(true)
             .navigationTitle("Jouer")
-            .background(Color.black.opacity(0.8))
+            .background(ThemeColors.primaryBackground)
         }
         .onAppear {
             viewModel.initialize()

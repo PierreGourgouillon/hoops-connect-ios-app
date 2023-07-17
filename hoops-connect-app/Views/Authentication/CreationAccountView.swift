@@ -126,7 +126,7 @@ struct CreationAccountView: View {
                     }
                 }
             }
-            .buttonStyle(RoundedButton(color: .orange))
+            .buttonStyle(RoundedButton(color: ThemeColors.primaryOrange))
             .foregroundColor(.white)
 
             NavigationLink(destination: HomeView(), isActive: $isNavigateToHome) { EmptyView() }

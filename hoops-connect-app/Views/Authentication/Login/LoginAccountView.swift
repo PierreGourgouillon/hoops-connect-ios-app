@@ -47,53 +47,67 @@ struct LoginAccountView: View {
     }
 
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            topSection
-            imageCard
-            VStack(alignment: .leading) {
-                Text("Information")
-                    .foregroundColor(.white)
-                    .font(.system(size: 22))
-                    .fontWeight(.bold)
-                    .padding(.top)
-                RoundedTextField(text: $viewModel.email, imageName: "envelope", placeholder: "Email")
-                RoundedTextField(text: $viewModel.password, imageName: "shield", placeholder: "Mot de passe")
-                    .padding(.top, 5)
-                    .padding(.bottom, 30)
-            }
-            Button("Se connecter") {
-                Task {
-                    await viewModel.login()
+        ScrollViewReader { reader in
+            ScrollView(showsIndicators: false) {
+                topSection
+                imageCard
+                VStack(alignment: .leading) {
+                    Text("Information")
+                        .foregroundColor(.white)
+                        .font(.system(size: 22))
+                        .fontWeight(.bold)
+                        .padding(.top)
+                    RoundedTextField(text: $viewModel.email, imageName: "envelope", placeholder: "Email")
+                        .id("email")
+                        .onTapGesture {
+                            reader.scrollTo("email", anchor: .center)
+                        }
+                    RoundedTextField(text: $viewModel.password, imageName: "shield", placeholder: "Mot de passe")
+                        .padding(.top, 5)
+                        .padding(.bottom, 30)
+                        .id("password")
+                        .onTapGesture {
+                            reader.scrollTo("password", anchor: .center)
+                        }
                 }
-            }
-            .buttonStyle(RoundedButton(color: .orange))
-            .foregroundColor(.white)
-            .padding(.top)
+                Button("Se connecter") {
+                    Task {
+                        await viewModel.login()
+                    }
+                }
+                .buttonStyle(RoundedButton(color: ThemeColors.primaryOrange))
+                .foregroundColor(.white)
+                .padding(.top)
 
-            NavigationLink(destination: HomeView(), isActive: $viewModel.isNavigateToHome) { EmptyView() }
-        }
-        .fullScreen()
-        .padding(.horizontal)
-        .navigationBarBackButtonHidden(true)
-        .background(.black.opacity(0.8))
-        .navigationTitle(Text("La connexion"))
-        .navigationBarTitleDisplayMode(.large)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "arrow.backward.circle")
-                        .font(.system(size: 25))
-                        .foregroundStyle(.white, .orange)
+                NavigationLink(destination: HomeView(), isActive: $viewModel.isNavigateToHome) { EmptyView() }
+            }
+            .fullScreen()
+            .padding(.horizontal)
+            .navigationBarBackButtonHidden(true)
+            .background(.black.opacity(0.8))
+            .navigationTitle(Text("La connexion"))
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrow.backward.circle")
+                            .font(.system(size: 25))
+                            .foregroundStyle(.white, .orange)
+                    }
                 }
             }
+            .customAlert(
+                isPresented: $viewModel.isError,
+                title: viewModel.error.title,
+                message: viewModel.error.message
+            )
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
         }
-        .customAlert(
-            isPresented: $viewModel.isError,
-            title: viewModel.error.title,
-            message: viewModel.error.message
-        )
     }
 }
 
