@@ -73,6 +73,7 @@ struct AuthenticationView: View {
         .navigationDestination(isPresented: $navigateToLoginAccount) {
             LoginAccountView()
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
