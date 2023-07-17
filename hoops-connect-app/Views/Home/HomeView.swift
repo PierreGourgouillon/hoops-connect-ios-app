@@ -29,7 +29,7 @@ struct HomeView: View {
     }
 
     var body: some View {
-        NavigationView { // Ajouter la NavigationView ici
+        NavigationView {
             ZStack(alignment: .bottom) {
                 VStack {
                     TabView(selection: $tabSelected) {
