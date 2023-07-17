@@ -22,7 +22,7 @@ struct CustomAlert: ViewModifier {
                 .padding(.bottom, safeAreaInsets.bottom)
 
             if isPresented {
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .center, spacing: 10) {
                     Text(title)
                         .foregroundColor(.white)
                         .font(.title3)
@@ -31,6 +31,7 @@ struct CustomAlert: ViewModifier {
                         .foregroundColor(.white)
                 }
                 .fullWidth()
+                .padding(.horizontal, 2)
                 .frame(height: height)
                 .background(Color.red)
                 .cornerRadius(20, corners: [.topRight, .topLeft])
@@ -39,13 +40,8 @@ struct CustomAlert: ViewModifier {
             }
         }
         .ignoresSafeArea()
-        .onTapGesture {
-            withAnimation {
-                isPresented = false
-            }
-        }
-        .onChange(of: isPresented) { newValue in
-            if newValue {
+        .onChange(of: isPresented) { isShowed in
+            if isShowed {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     withAnimation {
                         isPresented = false

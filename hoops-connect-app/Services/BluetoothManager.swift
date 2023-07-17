@@ -10,14 +10,6 @@ import CoreBluetooth
 import UIKit
 import SwiftUI
 
-enum BluetoothState {
-    case initialize
-    case scanning
-    case centralPowerOff
-    case connected
-    case disconnect
-}
-
 class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, ObservableObject {
     private var centralManager: CBCentralManager?
     private var peripheral: CBPeripheral?
@@ -131,7 +123,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
               let decodedData = try? JSONDecoder().decode(BodyBluetoothModel.self, from: jsonData) else {
             return
         }
-        print("UNE FOIS")
+        
         receivedDataFragments.removeAll()
 
         let bodyData = Data(decodedData.data.utf8)
@@ -168,4 +160,12 @@ enum BluetoothError: Error {
     case BluetoothReceiveMessageError
     case BluetoothParseDataError
     case BluetoothDisconnect
+}
+
+enum BluetoothState {
+    case initialize
+    case scanning
+    case centralPowerOff
+    case connected
+    case disconnect
 }

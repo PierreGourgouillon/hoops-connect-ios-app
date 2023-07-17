@@ -9,74 +9,52 @@ import SwiftUI
 import CoreBluetooth
 
 struct HomeView: View {
+    @State private var tabSelected: Tab = .house
+    @State private var sizeTabBar: CGSize = CGSize()
+    @ObservedObject var playGameViewModel: PlayGameViewModel = .init()
 
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        UITabBar.appearance().isHidden = true
+    }
+
+    var navTitle: String {
+        switch tabSelected {
+        case .gearshape:
+            return "Settings"
+        case .house:
+            return "Jouer"
+        case .chart:
+            return "Statistiques"
+        }
     }
 
     var body: some View {
-        GeometryReader { proxy in
-            VStack(alignment: .center) {
-                headerView(proxy: proxy)
-                HStack {
-                    statisticContainer(title: "Gifts", description: "25 %", color: .blue)
-                    Spacer()
-                    statisticContainer(title: "Income", description: "25 %", color: .yellow)
-                    Spacer()
-                    statisticContainer(title: "Expenses", description: "25 %", color: .pink)
+        NavigationView { // Ajouter la NavigationView ici
+            ZStack(alignment: .bottom) {
+                VStack {
+                    TabView(selection: $tabSelected) {
+                        switch tabSelected {
+                        case .gearshape:
+                            Text("Gear")
+                        case .house:
+                            PlayGameView(viewModel: playGameViewModel)
+                        case .chart:
+                            StatisticsView()
+                        }
+                    }
                 }
-                .padding(.horizontal, 30)
-                .padding(.top, -25)
-
-                Button("Lancer une partie") {
-
-                }
-                .buttonStyle(RoundedButton(color: .orange))
-                .foregroundStyle(.white)
-                .frame(width: proxy.size.width * 0.5)
-                .padding(.vertical, 50)
+                .padding(.bottom, sizeTabBar.height)
+                CustomTabBar(selectedTab: $tabSelected)
+                    .readSize($sizeTabBar)
             }
-            .fullScreen()
+            .customAlert(
+                isPresented: $playGameViewModel.isError,
+                title: playGameViewModel.gameError?.title ?? "",
+                message: playGameViewModel.gameError?.message ?? ""
+            )
             .navigationBarBackButtonHidden(true)
-            .navigationTitle("Jouer")
-            .background(Color.black.opacity(0.8))
         }
-    }
-
-    func headerView(proxy: GeometryProxy) -> some View {
-        return VStack {
-            ZStack {
-                StatisticHomeView()
-                .frame(width: proxy.size.width * 0.7, height: 420)
-
-                Image("basketball_player_home")
-                    .resizable()
-                    .clipped()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: proxy.size.width * 0.7, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .padding(.bottom, 150)
-                    .padding(.leading, 40)
-            }
-        }
-    }
-
-    func statisticContainer(title: String, description: String, color: Color) -> some View {
-        HStack(alignment: .top, spacing: 10) {
-            Circle()
-                .foregroundStyle(color)
-                .frame(width: 10, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                .padding(.top, 5)
-            VStack(alignment: .leading, spacing: 5) {
-                Text(title)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                Text(description)
-                    .font(.title)
-                    .fontWeight(.heavy)
-            }
-        }
-        .foregroundStyle(.white)
+        .navigationTitle(navTitle)
     }
 }
 
