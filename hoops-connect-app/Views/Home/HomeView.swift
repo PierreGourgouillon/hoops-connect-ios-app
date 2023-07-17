@@ -52,9 +52,10 @@ struct HomeView: View {
                 title: playGameViewModel.gameError?.title ?? "",
                 message: playGameViewModel.gameError?.message ?? ""
             )
-            .navigationBarBackButtonHidden(true)
         }
         .navigationTitle(navTitle)
+        .navigationBarTitleDisplayMode(.large)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
