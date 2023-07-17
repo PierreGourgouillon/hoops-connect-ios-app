@@ -14,7 +14,7 @@ class SettingsViewModel: ObservableObject {
 
     func logout() {
         do {
-            try FirebaseManager.shared.logout()
+            try FirebaseManager().logout()
             isDisconnect = true
         } catch {
             isError = true

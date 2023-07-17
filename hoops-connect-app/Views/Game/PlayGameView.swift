@@ -63,19 +63,34 @@ struct PlayGameView: View {
             buttonName = "Activer le bluetooth"
         }
 
-        return Button(buttonName) {
-            if viewModel.bluetoothState == .connected {
-                viewModel.startGame()
+        return HStack {
+            Button(buttonName) {
+                if viewModel.bluetoothState == .connected {
+                    viewModel.startGame()
+                }
             }
-        }
-        .buttonStyle(
-            RoundedButton(
-                color: viewModel.bluetoothState == .connected ? .orange : .gray,
-                fontSize: viewModel.bluetoothState == .connected ? 18 : 16
+            .buttonStyle(
+                RoundedButton(
+                    color: viewModel.bluetoothState == .connected ? .orange : .gray,
+                    fontSize: viewModel.bluetoothState == .connected ? 18 : 16
+                )
             )
-        )
-        .foregroundStyle(.white)
-        .disabled(viewModel.bluetoothState != .connected)
+            .foregroundStyle(.white)
+            Spacer()
+            Button(buttonName) {
+                if viewModel.bluetoothState == .connected {
+                    viewModel.startGame()
+                }
+            }
+            .buttonStyle(
+                RoundedButton(
+                    color: viewModel.bluetoothState == .connected ? .orange : .gray,
+                    fontSize: viewModel.bluetoothState == .connected ? 18 : 16
+                )
+            )
+            .foregroundStyle(.white)
+            .disabled(viewModel.bluetoothState != .connected)
+        }
     }
 
     var disconnectButton: some View {

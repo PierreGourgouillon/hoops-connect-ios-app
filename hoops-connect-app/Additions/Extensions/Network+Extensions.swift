@@ -28,7 +28,7 @@ extension Network {
 
 private class JWTNetworkRequestInterceptor: NetworkRequestInterceptor {
     func intercept(_ request: inout URLRequest) async throws {
-        guard let token = try? await FirebaseManager.shared.getToken(), !token.isEmpty else {
+        guard let token = try? await FirebaseManager().getToken(), !token.isEmpty else {
             throw NetworkError.custom("NO_AVAILABLE_TOKEN")
         }
 

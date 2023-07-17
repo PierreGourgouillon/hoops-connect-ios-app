@@ -14,8 +14,7 @@ class LoginAccountViewModel: ObservableObject {
     @Published var error: LoginAccountError = .none
     @Published var isNavigateToHome: Bool = false
 
-    private var firebaseManager: FirebaseManager = .init()
-
+    let firebaseManager: FirebaseManager = .init()
 
     @MainActor
     func login() async {
