@@ -16,37 +16,47 @@ class PlayGameViewModel: ObservableObject {
 
     @Published var bluetoothState: BluetoothState = .initialize
     @Published var isError: Bool = false
-    @Published var errorType: GameError?
+    @Published var gameError: GameError?
+    @Published var isGameStart: Bool = false
 
     init(bluetoothManager: BluetoothManager = .init()) {
         self.bluetoothManager = bluetoothManager
         self.gameManager = .init(bluetoothManager: bluetoothManager)
 
-        bluetoothManager.$state
-            .sink { [weak self] in
-                if $0 == .connected || $0 == .scanning {
-                    self?.isError = false
-                    self?.errorType = nil
-                }
-                self?.bluetoothState = $0
-            }
-            .store(in: &cancellables)
 
-        gameManager.$gameError
-            .sink { [weak self] in
-                self?.isError = true
-                self?.errorType = $0
+        handleBluetoothState()
+    }
+
+    func handleBluetoothState() {
+        bluetoothManager.$state
+            .sink { [weak self] state in
+                guard let self else { return }
+
+                if state == .connected || state == .scanning {
+                    resetGameError()
+                }
+                 self.bluetoothState = state
             }
             .store(in: &cancellables)
     }
 
     func initialize() {
-        gameManager.initializeGame()
+        bluetoothManager.initialize()
     }
 
     func startGame() {
+        do {
+//            resetGameError()
+//            try gameManager.startGame(duration: 60, difficulty: .easy)
+            isGameStart = true
+        } catch {
+            self.isError = true
+            self.gameError = .gameStartError
+        }
+    }
+
+    func resetGameError() {
         isError = false
-        errorType = nil
-        gameManager.tryStartGame(duration: 60, difficulty: .easy)
+        gameError = nil
     }
 }

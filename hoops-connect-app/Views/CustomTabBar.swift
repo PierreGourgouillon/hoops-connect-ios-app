@@ -44,18 +44,11 @@ struct CustomTabBar: View {
 
     var body: some View {
         VStack(alignment: .center) {
-//            Path { path in
-//                path.addLines([.init(x: 0, y: 28), .init(x: 6, y: 20)])
-//            }
-//            .stroke(lineWidth: 1)
-//            .frame(width: UIScreen.main.bounds.width, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-
             HStack {
                 ForEach(Tab.allCases, id: \.rawValue) { tab in
                     Spacer()
                     ZStack(alignment: .center) {
                         Image(systemName: selectedTab == tab ? fillImage : tab.defaultImage)
-//                            .offset(y: selectedTab == tab ? -40 : 0)
                             .foregroundColor(tab == selectedTab ? .orange : .gray)
                             .font(.system(size: 20))
                             .onTapGesture {
@@ -63,19 +56,6 @@ struct CustomTabBar: View {
                                     selectedTab = tab
                                 }
                             }
-
-//                        if selectedTab == tab {
-//                            VStack(alignment: .center) {
-//                                Text(tab.displayName)
-//                                    .foregroundStyle(Color.orange)
-//                                    .fontWeight(.semibold)
-//                                    .font(.system(size: 10))
-//
-//                                Circle()
-//                                    .frame(width: 3, height: 3)
-//                                    .foregroundStyle(Color.orange)
-//                            }
-//                        }
                     }
                     Spacer()
                 }

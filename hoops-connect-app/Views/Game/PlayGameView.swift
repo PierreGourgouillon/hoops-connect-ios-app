@@ -8,57 +8,31 @@
 import SwiftUI
 
 struct PlayGameView: View {
-    @ObservedObject private var viewModel: PlayGameViewModel = .init()
+    @ObservedObject var viewModel: PlayGameViewModel
 
-    init() {
+    init(viewModel: PlayGameViewModel) {
+        self.viewModel = viewModel
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-    }
-
-    var body: some View {
-        GeometryReader { proxy in
-            VStack(alignment: .center) {
-                headerView(proxy: proxy)
-                HStack {
-                    statisticContainer(title: "Gifts", description: "25 %", color: .blue)
-                    Spacer()
-                    statisticContainer(title: "Income", description: "25 %", color: .yellow)
-                    Spacer()
-                    statisticContainer(title: "Expenses", description: "25 %", color: .pink)
-                }
-                .padding(.horizontal, 30)
-                .padding(.top, -25)
-
-                Button("Lancer une partie") {
-                    viewModel.startGame()
-                }
-                .buttonStyle(RoundedButton(color: .orange))
-                .foregroundStyle(.white)
-                .frame(width: proxy.size.width * 0.5)
-                .padding(.vertical, 50)
-            }
-            .fullScreen()
-            .navigationBarBackButtonHidden(true)
-            .navigationTitle("Jouer")
-            .background(Color.black.opacity(0.8))
-        }
     }
 
     func headerView(proxy: GeometryProxy) -> some View {
         return VStack {
             ZStack {
                 StatisticHomeView()
-                .frame(width: proxy.size.width * 0.7, height: 420)
+                .frame(width: proxy.size.width * 0.6, height: 340)
 
                 Image("basketball_player_home")
                     .resizable()
                     .clipped()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: proxy.size.width * 0.7, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: proxy.size.width * 0.6, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .padding(.bottom, 150)
                     .padding(.leading, 40)
             }
+            .offset(y: -90)
         }
+        .frame(width: proxy.size.width * 0.6, height: 340)
     }
 
     func statisticContainer(title: String, description: String, color: Color) -> some View {
@@ -78,10 +52,84 @@ struct PlayGameView: View {
         }
         .foregroundStyle(.white)
     }
+
+    var buttonState: some View {
+        var buttonName: String
+        switch viewModel.bluetoothState {
+        case .scanning:
+            buttonName = "En recherche de panier"
+        case .connected:
+            buttonName = "Lancer une partie"
+        default:
+            buttonName = "Activer le bluetooth"
+        }
+
+        return Button(buttonName) {
+//            if viewModel.bluetoothState == .connected {
+                viewModel.startGame()
+//            }
+        }
+        .buttonStyle(
+            RoundedButton(
+                color: viewModel.bluetoothState == .connected ? .orange : .gray,
+                fontSize: viewModel.bluetoothState == .connected ? 18 : 16
+            )
+        )
+        .foregroundStyle(.white)
+//        .disabled(viewModel.bluetoothState != .connected)
+    }
+
+    var disconnectButton: some View {
+        Button("Arrêter la partie") {
+            viewModel.isGameStart = false
+        }
+        .buttonStyle(
+            RoundedButton(
+                color: .red,
+                fontSize: 18
+            )
+        )
+        .foregroundStyle(.white)
+    }
+
+    var body: some View {
+        GeometryReader { proxy in
+            VStack(alignment: .center) {
+                if viewModel.isGameStart {
+                    TimerStartGameView()
+                    disconnectButton
+                        .frame(width: proxy.size.width * 0.5)
+                        .padding(.vertical, 50)
+                } else {
+                    headerView(proxy: proxy)
+                    HStack {
+                        statisticContainer(title: "Matchs", description: "25 %", color: .blue)
+                        Spacer()
+                        statisticContainer(title: "PPG", description: "25 %", color: .yellow)
+                        Spacer()
+                        statisticContainer(title: "Score", description: "25 %", color: .pink)
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.top, -25)
+
+                    buttonState
+                        .frame(width: proxy.size.width * 0.5)
+                        .padding(.vertical, 50)
+                }
+            }
+            .fullScreen()
+            .navigationBarBackButtonHidden(true)
+            .navigationTitle("Jouer")
+            .background(Color.black.opacity(0.8))
+        }
+        .onAppear {
+            viewModel.initialize()
+        }
+    }
 }
 
 struct PlayGame_Previews: PreviewProvider {
     static var previews: some View {
-        PlayGameView()
+        PlayGameView(viewModel: .init())
     }
 }
