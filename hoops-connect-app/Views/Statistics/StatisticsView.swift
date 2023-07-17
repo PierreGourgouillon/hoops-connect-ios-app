@@ -17,7 +17,7 @@ struct StatisticsView: View {
                 ForEach((1...10), id: \.self) { _ in
                     GameStatCard(game: game)
                         .padding(.horizontal)
-                        .padding(.vertical, 10)
+                        .padding(.vertical, 12)
                 }
                 .listRowSeparatorTint(.clear)
                 .listRowBackground(Color.clear)

@@ -23,4 +23,17 @@ enum DifficultyStatus: String, Codable {
     case medium = "MEDIUM"
     case hardcore = "HARDCORE"
     case ultime = "ULTIME"
+
+    var traduction: String {
+        switch self {
+        case .easy:
+            return "facile"
+        case .medium:
+            return "moyen"
+        case .hardcore:
+            return "difficile"
+        case .ultime:
+            return "ultime"
+        }
+    }
 }

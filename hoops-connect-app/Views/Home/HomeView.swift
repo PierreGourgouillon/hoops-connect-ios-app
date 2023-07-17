@@ -24,7 +24,7 @@ struct HomeView: View {
         case .house:
             return "Jouer"
         case .chart:
-            return "Statistiques"
+            return "Historique"
         }
     }
 

@@ -24,33 +24,60 @@ struct GameStatCard: View {
                 HStack(spacing: 0) {
                     VStack(alignment: .leading) {
                         HStack(alignment: .top) {
-                            Text("\(game.difficulty.rawValue.lowercased())")
-                                .foregroundStyle(Color.white)
+                            Text("\(game.difficulty.traduction.uppercased())")
+                                .foregroundStyle(ThemeColors.primaryWhite)
                                 .font(.system(size: 12))
                                 .padding(.horizontal, 7)
+                                .padding(.vertical, 5)
+                                .fontWeight(.semibold)
                                 .background(
-                                    Color.orange
-                                        .cornerRadius(20, corners: .allCorners)
+                                    RoundedCorner(radius: .infinity, corners: .allCorners)
+                                        .stroke(ThemeColors.primaryWhite, lineWidth: 1)
+                                        .background(
+                                            ThemeColors.primaryOrange
+                                                .cornerRadius(.infinity, corners: .allCorners)
+                                        )
+                                    )
+                            Text("25 Juin")
+                                .foregroundStyle(ThemeColors.primaryWhite)
+                                .font(.system(size: 12))
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 5)
+                                .fontWeight(.semibold)
+                                .background(
+                                    RoundedCorner(radius: .infinity, corners: .allCorners)
+                                        .stroke(ThemeColors.primaryWhite, lineWidth: 1)
+                                        .background(
+                                            ThemeColors.primaryOrange
+                                                .cornerRadius(.infinity, corners: .allCorners)
+                                        )
                                 )
                             Spacer()
+                            Text("\(game.score) pts")
+                                .foregroundStyle(ThemeColors.primaryWhite)
+                                .font(.system(size: 12))
+                                .padding(.horizontal, 7)
+                                .padding(.vertical, 5)
+                                .fontWeight(.semibold)
+                                .background(
+                                    RoundedCorner(radius: 4.0, corners: .allCorners)
+                                        .stroke(ThemeColors.primaryWhite, lineWidth: 1)
+                                        .background(
+                                            ThemeColors.primaryOrange
+                                                .cornerRadius(4, corners: .allCorners)
+                                        )
+                                )
                         }
+                        .padding(.top)
                         Spacer()
-                        Text("\(game.mode.rawValue.capitalized)")
-                            .foregroundStyle(Color.white)
+                        Text("Mode \(game.mode.rawValue.lowercased())")
+                            .foregroundStyle(ThemeColors.primaryWhite)
+                            .font(.title)
+                            .padding(.bottom, 40)
+                            .fontWeight(.bold)
                     }
                     .padding(.horizontal)
-                    .frame(width: proxy.frame(in: .local).width * 0.7)
-                    .frame(minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-
-                    VStack(alignment: .center) {
-                        ZStack(alignment: .center) {
-                            Circle()
-                                .foregroundStyle(Color.white.opacity(0.5))
-                                .frame(width: 80)
-                            Text("\(game.score) pts")
-                        }
-                    }
-                    .frame(width: proxy.frame(in: .local).width * 0.3)
+                    .fullWidth()
                     .frame(minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
                 }
             }
