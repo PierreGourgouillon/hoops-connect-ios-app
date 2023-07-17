@@ -24,7 +24,7 @@ struct HomeView: View {
         case .house:
             return "Jouer"
         case .chart:
-            return "Statistiques"
+            return "Historique"
         }
     }
 
@@ -52,9 +52,10 @@ struct HomeView: View {
                 title: playGameViewModel.gameError?.title ?? "",
                 message: playGameViewModel.gameError?.message ?? ""
             )
-            .navigationBarBackButtonHidden(true)
         }
         .navigationTitle(navTitle)
+        .navigationBarTitleDisplayMode(.large)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
