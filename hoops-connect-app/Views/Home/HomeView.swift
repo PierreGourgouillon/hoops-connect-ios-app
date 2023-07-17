@@ -11,8 +11,6 @@ import CoreBluetooth
 struct HomeView: View {
     @State private var tabSelected: Tab = .house
     @State private var sizeTabBar: CGSize = CGSize()
-    @ObservedObject var playGameViewModel: PlayGameViewModel = .init()
-    @ObservedObject var settingsViewModel: SettingsViewModel = .init()
 
     init() {
         UITabBar.appearance().isHidden = true
@@ -36,9 +34,9 @@ struct HomeView: View {
                     TabView(selection: $tabSelected) {
                         switch tabSelected {
                         case .gearshape:
-                            SettingsView(viewModel: settingsViewModel)
+                            SettingsView()
                         case .house:
-                            PlayGameView(viewModel: playGameViewModel)
+                            PlayGameView()
                         case .chart:
                             StatisticsView()
                         }
@@ -48,16 +46,16 @@ struct HomeView: View {
                 CustomTabBar(selectedTab: $tabSelected)
                     .readSize($sizeTabBar)
             }
-            .customAlert(
-                isPresented: $playGameViewModel.isError,
-                title: playGameViewModel.gameError?.title ?? "",
-                message: playGameViewModel.gameError?.message ?? ""
-            )
-            .customAlert(
-                isPresented: $settingsViewModel.isError,
-                title: settingsViewModel.settingsError?.title ?? "",
-                message: settingsViewModel.settingsError?.message ?? ""
-            )
+//            .customAlert(
+//                isPresented: $playGameViewModel.isError,
+//                title: playGameViewModel.gameError?.title ?? "",
+//                message: playGameViewModel.gameError?.message ?? ""
+//            )
+//            .customAlert(
+//                isPresented: $settingsViewModel.isError,
+//                title: settingsViewModel.settingsError?.title ?? "",
+//                message: settingsViewModel.settingsError?.message ?? ""
+//            )
         }
         .navigationTitle(navTitle)
         .navigationBarTitleDisplayMode(.large)

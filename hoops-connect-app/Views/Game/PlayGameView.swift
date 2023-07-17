@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct PlayGameView: View {
-    @ObservedObject var viewModel: PlayGameViewModel
+    @ObservedObject var viewModel: PlayGameViewModel = .init()
 
-    init(viewModel: PlayGameViewModel) {
-        self.viewModel = viewModel
+    init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
     }
@@ -65,9 +64,9 @@ struct PlayGameView: View {
         }
 
         return Button(buttonName) {
-//            if viewModel.bluetoothState == .connected {
+            if viewModel.bluetoothState == .connected {
                 viewModel.startGame()
-//            }
+            }
         }
         .buttonStyle(
             RoundedButton(
@@ -76,7 +75,7 @@ struct PlayGameView: View {
             )
         )
         .foregroundStyle(.white)
-//        .disabled(viewModel.bluetoothState != .connected)
+        .disabled(viewModel.bluetoothState != .connected)
     }
 
     var disconnectButton: some View {
@@ -130,6 +129,6 @@ struct PlayGameView: View {
 
 struct PlayGame_Previews: PreviewProvider {
     static var previews: some View {
-        PlayGameView(viewModel: .init())
+        PlayGameView()
     }
 }

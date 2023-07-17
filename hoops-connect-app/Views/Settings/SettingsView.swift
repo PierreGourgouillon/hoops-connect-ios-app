@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @State var isShowEditUserProfile: Bool = false
-    @ObservedObject var viewModel: SettingsViewModel
+    @ObservedObject var viewModel: SettingsViewModel = .init()
 
     var body: some View {
         VStack {
@@ -77,6 +77,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(viewModel: .init())
+        SettingsView()
     }
 }
