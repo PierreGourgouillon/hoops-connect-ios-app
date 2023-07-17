@@ -23,7 +23,6 @@ class PlayGameViewModel: ObservableObject {
         self.bluetoothManager = bluetoothManager
         self.gameManager = .init(bluetoothManager: bluetoothManager)
 
-
         handleBluetoothState()
     }
 
@@ -46,9 +45,11 @@ class PlayGameViewModel: ObservableObject {
 
     func startGame() {
         do {
+            isError = true
+            gameError = .gameStartError
 //            resetGameError()
 //            try gameManager.startGame(duration: 60, difficulty: .easy)
-            isGameStart = true
+//            isGameStart = true
         } catch {
             self.isError = true
             self.gameError = .gameStartError

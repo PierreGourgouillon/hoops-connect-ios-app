@@ -41,7 +41,6 @@ struct GameStatCard: View {
                     .padding(.horizontal)
                     .frame(width: proxy.frame(in: .local).width * 0.7)
                     .frame(minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-                    .background(Color.red)
 
                     VStack(alignment: .center) {
                         ZStack(alignment: .center) {

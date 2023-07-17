@@ -31,6 +31,7 @@ struct CustomAlert: ViewModifier {
                         .foregroundColor(.white)
                 }
                 .fullWidth()
+                .padding(.horizontal, 2)
                 .frame(height: height)
                 .background(Color.red)
                 .cornerRadius(20, corners: [.topRight, .topLeft])

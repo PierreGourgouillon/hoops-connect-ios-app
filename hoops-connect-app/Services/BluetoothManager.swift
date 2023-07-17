@@ -123,7 +123,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
               let decodedData = try? JSONDecoder().decode(BodyBluetoothModel.self, from: jsonData) else {
             return
         }
-        print("UNE FOIS")
+        
         receivedDataFragments.removeAll()
 
         let bodyData = Data(decodedData.data.utf8)
