@@ -64,15 +64,22 @@ struct PlayGameView: View {
         }
 
         return HStack {
-            Button(buttonName) {
-                if viewModel.bluetoothState == .connected {
-                    viewModel.startGame()
+            Button(viewModel.gameMode.traduction.uppercased()) {
+                switch viewModel.gameMode {
+                case .easy:
+                    viewModel.gameMode = .medium
+                case .medium:
+                    viewModel.gameMode = .hardcore
+                case .hardcore:
+                    viewModel.gameMode = .ultime
+                case .ultime:
+                    viewModel.gameMode = .easy
                 }
             }
             .buttonStyle(
                 RoundedButton(
-                    color: viewModel.bluetoothState == .connected ? .orange : .gray,
-                    fontSize: viewModel.bluetoothState == .connected ? 18 : 16
+                    color: .orange,
+                    fontSize: 18
                 )
             )
             .foregroundStyle(.white)
@@ -91,6 +98,7 @@ struct PlayGameView: View {
             .foregroundStyle(.white)
             .disabled(viewModel.bluetoothState != .connected)
         }
+        .fullWidth()
     }
 
     var disconnectButton: some View {
@@ -127,8 +135,8 @@ struct PlayGameView: View {
                     .padding(.top, -25)
 
                     buttonState
-                        .frame(width: proxy.size.width * 0.5)
                         .padding(.vertical, 50)
+                        .padding(.horizontal)
                 }
             }
             .fullScreen()

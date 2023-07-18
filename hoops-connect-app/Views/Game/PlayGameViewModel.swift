@@ -18,6 +18,7 @@ class PlayGameViewModel: ObservableObject {
     @Published var isError: Bool = false
     @Published var gameError: GameError?
     @Published var isGameStart: Bool = false
+    @Published var gameMode: DifficultyStatus = .easy
 
     init(bluetoothManager: BluetoothManager = .init()) {
         self.bluetoothManager = bluetoothManager
@@ -45,11 +46,10 @@ class PlayGameViewModel: ObservableObject {
 
     func startGame() {
         do {
-            isError = true
-            gameError = .gameStartError
-//            resetGameError()
-//            try gameManager.startGame(duration: 60, difficulty: .easy)
-//            isGameStart = true
+            resetGameError()
+            // TODO: Par la suite changer la difficulty par la variable
+            try gameManager.startGame(duration: 60, difficulty: .easy)
+            isGameStart = true
         } catch {
             self.isError = true
             self.gameError = .gameStartError

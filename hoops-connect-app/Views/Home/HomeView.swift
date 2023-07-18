@@ -11,7 +11,7 @@ import CoreBluetooth
 struct HomeView: View {
     @State private var tabSelected: Tab = .house
     @State private var sizeTabBar: CGSize = CGSize()
-
+    
     init() {
         UITabBar.appearance().isHidden = true
     }
