@@ -9,7 +9,6 @@ import FirebaseAuth
 import Firebase
 
 class FirebaseManager {
-    public static let shared: FirebaseManager = .init()
 
     func authenticationFlow() async throws {
         guard FirebaseProvider.auth.currentUser != nil else { throw ApplicationStateError.notAuthenticated }

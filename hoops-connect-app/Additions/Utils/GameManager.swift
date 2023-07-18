@@ -12,9 +12,10 @@ class GameManager {
     private let bluetoothManager: BluetoothManager
     private var cancellables = Set<AnyCancellable>()
     private var gameService: GameService = .init()
-
+    private var firebaseManager: FirebaseManager
     init(bluetoothManager: BluetoothManager) {
         self.bluetoothManager = bluetoothManager
+        self.firebaseManager = FirebaseManager()
 
 //        bluetoothManager.$error
 //            .sink { [weak self] in
@@ -49,7 +50,7 @@ class GameManager {
     }
 
     func startGame(duration: Int, difficulty: DifficultyStatus) throws {
-        let playerId = try FirebaseManager.shared.getUserId()
+        let playerId = try firebaseManager.getUserId()
         let startGameModel = StartGameModel(mode: .chrono, playerId: playerId, duration: duration, difficulty: difficulty)
         bluetoothManager.writeValue(data: startGameModel, type: .gameStart)
     }
