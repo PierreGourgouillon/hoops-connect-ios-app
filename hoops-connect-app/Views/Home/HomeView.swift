@@ -9,57 +9,43 @@ import SwiftUI
 import CoreBluetooth
 
 struct HomeView: View {
-    @State private var tabSelected: Tab = .house
-    @State private var sizeTabBar: CGSize = CGSize()
-    
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
-
-    var navTitle: String {
-        switch tabSelected {
-        case .gearshape:
-            return ""
-        case .house:
-            return "Jouer"
-        case .chart:
-            return "Historique"
-        }
-    }
+    @State var navigateToSettings = false
+    @State var navigateToStatistics = false
 
     var body: some View {
         NavigationView {
-            ZStack(alignment: .bottom) {
-                VStack {
-                    TabView(selection: $tabSelected) {
-                        switch tabSelected {
-                        case .gearshape:
-                            SettingsView()
-                        case .house:
-                            PlayGameView()
-                        case .chart:
-                            StatisticsView()
-                        }
-                    }
-                }
-                .padding(.bottom, sizeTabBar.height)
-                CustomTabBar(selectedTab: $tabSelected)
-                    .readSize($sizeTabBar)
-            }
-//            .customAlert(
-//                isPresented: $playGameViewModel.isError,
-//                title: playGameViewModel.gameError?.title ?? "",
-//                message: playGameViewModel.gameError?.message ?? ""
-//            )
-//            .customAlert(
-//                isPresented: $settingsViewModel.isError,
-//                title: settingsViewModel.settingsError?.title ?? "",
-//                message: settingsViewModel.settingsError?.message ?? ""
-//            )
+            PlayGameView()
         }
-        .navigationTitle(navTitle)
+        .navigationTitle("Jouer")
         .navigationBarTitleDisplayMode(.large)
         .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    navigateToSettings = true
+                } label: {
+                    Image(systemName: "person.fill")
+                        .foregroundStyle(.white)
+                }
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    navigateToStatistics = true
+                } label: {
+                    Image(systemName: "chart.bar")
+                        .foregroundStyle(.white)
+                }
+            }
+        }
+        .sheet(isPresented: $navigateToSettings, content: {
+            SettingsView()
+                .presentationDetents([.large])
+                .presentationDragIndicator(.visible)
+        })
+        .navigationDestination(isPresented: $navigateToStatistics) {
+            StatisticsView()
+        }
     }
 }
 

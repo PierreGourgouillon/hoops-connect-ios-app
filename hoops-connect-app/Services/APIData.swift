@@ -6,5 +6,6 @@
 //
 
 struct APIData<T: Decodable>: Decodable {
-    let data: T
+    let data: T?
+    let error: String?
 }

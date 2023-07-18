@@ -11,4 +11,7 @@ import RetroSwift
 struct GameService {
     @Network<Void>(authenticated: .gameFinish, method: .POST)
     var gameFinish
+
+    @Network<APIData<[GameModel]>>(authenticated: .games, method: .GET)
+    var games
 }

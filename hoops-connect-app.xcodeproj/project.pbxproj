@@ -28,7 +28,6 @@
 		8F6AD05E2A4F62F50025536A /* LoginAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */; };
 		8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */; };
 		8F8EC64E2A61772300B3F23B /* PlayGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8EC64D2A61772300B3F23B /* PlayGameView.swift */; };
-		8F8EC6502A617D0F00B3F23B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8EC64F2A617D0F00B3F23B /* CustomTabBar.swift */; };
 		8F8EC6522A61864F00B3F23B /* ReadSizeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8EC6512A61864F00B3F23B /* ReadSizeModifier.swift */; };
 		8F95E97C2A549D6F000A728C /* BodyBluetoothModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */; };
 		8FCA0B782A56E6620007F97D /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCA0B772A56E6620007F97D /* GameManager.swift */; };
@@ -89,7 +88,6 @@
 		8F6AD05D2A4F62F50025536A /* LoginAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAccountView.swift; sourceTree = "<group>"; };
 		8F6AD05F2A4F749D0025536A /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		8F8EC64D2A61772300B3F23B /* PlayGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayGameView.swift; sourceTree = "<group>"; };
-		8F8EC64F2A617D0F00B3F23B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		8F8EC6512A61864F00B3F23B /* ReadSizeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadSizeModifier.swift; sourceTree = "<group>"; };
 		8F95E97B2A549D6F000A728C /* BodyBluetoothModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyBluetoothModel.swift; sourceTree = "<group>"; };
 		8FCA0B772A56E6620007F97D /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 				8F8EC64C2A61771100B3F23B /* Game */,
 				8FF1C0E42A4DB8DD0033DCBE /* Home */,
 				8FF1C0DF2A4DB8970033DCBE /* Authentication */,
-				8F8EC64F2A617D0F00B3F23B /* CustomTabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -489,7 +486,6 @@
 				8F4CDF382A58606B00E01819 /* StatisticHomeView.swift in Sources */,
 				8FE35E6D2A53759F00097C54 /* UserModel.swift in Sources */,
 				8F6AD0602A4F749D0025536A /* RoundedTextField.swift in Sources */,
-				8F8EC6502A617D0F00B3F23B /* CustomTabBar.swift in Sources */,
 				8FE22DB72A54CA95005B8518 /* BluetoothCoder.swift in Sources */,
 				8F4F91F62A64A7540055E260 /* StatisticsView.swift in Sources */,
 				8FE35E4C2A52BA5700097C54 /* SafeAreaInsets+EnvironmentValues.swift in Sources */,

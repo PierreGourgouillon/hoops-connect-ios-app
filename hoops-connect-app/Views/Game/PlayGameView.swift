@@ -141,7 +141,6 @@ struct PlayGameView: View {
             }
             .fullScreen()
             .navigationBarBackButtonHidden(true)
-            .navigationTitle("Jouer")
             .background(ThemeColors.primaryBackground)
         }
         .onAppear {

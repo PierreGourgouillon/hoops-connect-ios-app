@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GameModel: Codable {
+struct GameModel: Codable, Hashable {
     let date: String
     let score: Int
     let playerId: String
@@ -18,5 +18,11 @@ struct GameModel: Codable {
 
     func toDTO() -> GameDTO {
         GameDTO(date: date, score: score, deviceId: deviceId, difficulty: difficulty, duration: duration, mode: mode)
+    }
+}
+
+extension GameModel {
+    static var gamePlaceholder: GameModel {
+        .init(date: "25 Juin", score: 100, playerId: "", deviceId: "", difficulty: .easy, duration: 60, mode: .chrono)
     }
 }

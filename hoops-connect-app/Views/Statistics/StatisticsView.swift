@@ -8,30 +8,43 @@
 import SwiftUI
 
 struct StatisticsView: View {
-    @ObservedObject private var viewModel: StatisticsViewModel = .init()
-    let game: GameModel = .init(date: "25/05/2002", score: 100, playerId: "", deviceId: "", difficulty: .easy, duration: 60, mode: .chrono)
+    @ObservedObject var viewModel: StatisticsViewModel
+
+    init(viewModel: StatisticsViewModel = .init()) {
+        self.viewModel = viewModel
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
             List {
-                ForEach((1...10), id: \.self) { _ in
-                    GameStatCard(game: game)
-                        .padding(.horizontal)
-                        .padding(.vertical, 12)
+                if viewModel.state == .error {
+                    Text("Error")
+                } else {
+                    ForEach(viewModel.games, id: \.self) { game in
+                        GameStatCard(game: game)
+                            .padding(.horizontal)
+                            .padding(.vertical, 12)
+                            .redacted(when: viewModel.state == .loading)
+                    }
+                    .listRowSeparatorTint(.clear)
+                    .listRowBackground(Color.clear)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
-                .listRowSeparatorTint(.clear)
-                .listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             }
             .listStyle(.plain)
-            .frame(height: UIScreen.main.bounds.height * 0.8 - 80)
-            .padding(.bottom, 60)
+            .frame(minHeight: 0, maxHeight: .infinity)
+            .ignoresSafeArea(.all, edges: .bottom)
+            .refreshable {
+                Task {
+                    await viewModel.getGames()
+                }
+            }
         }
         .fullScreen()
-        .navigationBarBackButtonHidden(true)
+        .navigationTitle("Historique")
         .background(Color.black.opacity(0.8))
-        .refreshable {
-
+        .task {
+            await viewModel.getGames()
         }
     }
 }

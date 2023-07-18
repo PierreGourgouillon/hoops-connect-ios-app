@@ -39,4 +39,12 @@ extension View {
     func readSize(_ size: Binding<CGSize>) -> some View {
         modifier(ReadSizeModifier(size: size))
     }
+
+    @ViewBuilder func redacted(when condition: Bool) -> some View {
+        if condition {
+            redacted(reason: .placeholder)
+        } else {
+            unredacted()
+        }
+    }
 }
